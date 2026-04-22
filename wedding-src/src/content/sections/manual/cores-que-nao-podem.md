@@ -1,5 +1,3 @@
 ## Cores que não podem
 
-(Conteúdo de exemplo)
-
-Pedimos para evitar **branco, off-white e tons muito claros** — essas cores ficam reservadas para a noiva.
+Pra que a Letícia brilhe sozinha no vestido dela, evita branco, off-white e tons muito claros. Qualquer outra cor é bem vinda.

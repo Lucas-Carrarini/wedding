@@ -45,7 +45,7 @@ export default function GiftsModalButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="rounded-full bg-neutral-900 px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-neutral-800"
+        className="rounded-full bg-graphite px-6 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
       >
         {openLabel}
       </button>
@@ -61,14 +61,14 @@ export default function GiftsModalButton({
           <div
             role="dialog"
             aria-modal="true"
-            className="relative z-10 flex max-h-[85vh] w-full max-w-2xl flex-col rounded-t-3xl bg-white shadow-soft sm:rounded-3xl"
+            className="relative z-10 flex max-h-[85vh] w-full max-w-2xl flex-col rounded-t-3xl bg-paper shadow-soft sm:rounded-3xl"
           >
             <div className="flex items-center justify-between border-b border-neutral-100 px-6 py-4">
-              <div className="font-serif text-xl font-bold text-neutral-900">{modalTitle}</div>
+              <div className="font-serif text-xl font-bold text-graphite">{modalTitle}</div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-neutral-100 px-4 py-2 text-sm font-semibold text-neutral-900 transition hover:bg-neutral-200"
+                className="rounded-full bg-neutral-100 px-4 py-2 text-sm font-semibold text-graphite transition hover:bg-neutral-200"
               >
                 {closeLabel}
               </button>
@@ -88,7 +88,7 @@ export default function GiftsModalButton({
                       <img src={g.fotoUrl} alt="" className="h-full w-full object-cover" loading="lazy" />
                     </div>
                     <div className="flex min-w-0 flex-1 flex-col justify-center">
-                      <div className="truncate font-semibold text-neutral-900">{g.nome}</div>
+                      <div className="truncate font-semibold text-graphite">{g.nome}</div>
                       <div className="mt-1 text-sm font-medium text-brand-600">{formatBRL(g.valor)}</div>
                     </div>
                   </li>
@@ -102,7 +102,7 @@ export default function GiftsModalButton({
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-flex rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-neutral-800"
+                className="mt-3 inline-flex rounded-full bg-graphite px-5 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
               >
                 {whatsappLabel}
               </a>

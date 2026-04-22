@@ -1,3 +1,3 @@
-(Conteúdo de exemplo)
+## Janta
 
-Após a cerimônia, convidamos vocês para a **janta**. Cardápio pensado com carinho e espaço generoso para conversar, brindar e celebrar.
+Depois do sim, senta com a gente. A mesa é pra conversar, brindar e comer sem pressa.

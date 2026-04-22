@@ -23,7 +23,7 @@ function chunk<T>(arr: T[], size: number): T[][] {
 
 function renderPanel(it: Item) {
   return (
-    <div className="mt-3 rounded-2xl bg-white p-5 shadow-soft sm:mt-4 sm:p-6">
+    <div className="mt-3 rounded-2xl bg-paper p-5 shadow-soft sm:mt-4 sm:p-6">
       <div
         className="prose prose-neutral max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:mt-0 prose-h2:text-xl sm:prose-h2:text-2xl"
         dangerouslySetInnerHTML={{ __html: it.contentHtml }}
@@ -32,7 +32,7 @@ function renderPanel(it: Item) {
         <div className="mt-5">
           <a
             href={it.redirectTo}
-            className="inline-flex rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-neutral-800"
+            className="inline-flex rounded-full bg-graphite px-5 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
           >
             {it.redirectLabel}
           </a>
@@ -79,7 +79,7 @@ export default function ManualGrid({ items }: Props) {
                     onClick={() => onItemClick(it)}
                     aria-label={it.title}
                     aria-expanded={isOpen}
-                    className={`relative z-0 aspect-square overflow-hidden bg-white shadow-soft transition active:scale-[0.98] ${
+                    className={`relative z-0 aspect-square overflow-hidden bg-paper shadow-soft transition active:scale-[0.98] ${
                       shouldPulse ? 'll-manual-pulse' : ''
                     } ${isOpen ? 'z-10 ring-2 ring-inset ring-brand-500' : ''}`}
                   >

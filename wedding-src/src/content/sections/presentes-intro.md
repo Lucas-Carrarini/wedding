@@ -1,3 +1,1 @@
-(Conteúdo de exemplo)
-
-A gente queria começar agradecendo. **Muito**. Cada pessoa que de alguma forma passou pela nossa vida nos apoiando, torcendo e caminhando com a gente até aqui — obrigado. O que estamos construindo tem um pedacinho de vocês.
+Antes de qualquer coisa, obrigado. Cada pessoa que vai estar com a gente no dia 26 já é presente. O que vem a seguir é pra quem quiser contribuir com a nossa nova casa. Tudo que chegar vai ser recebido com muito carinho.

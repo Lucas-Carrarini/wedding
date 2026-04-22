@@ -1,5 +1,3 @@
 ## Mesa de doces
 
-(Conteúdo de exemplo)
-
-A mesa de doces será liberada após o brinde. Tenha calma: tem para todo mundo. 😉
+A mesa é liberada depois do brinde. Pode ir com calma, tem doce pra todo mundo.

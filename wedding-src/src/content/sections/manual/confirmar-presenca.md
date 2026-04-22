@@ -1,5 +1,3 @@
 ## Confirme sua presença
 
-(Conteúdo de exemplo)
-
-A confirmação acontece em uma página dedicada, onde você preenche seu nome e dos demais convidados da sua casa. É rápido e ajuda a gente com a organização.
+A gente precisa saber que você vem. Na página de confirmação você coloca seu nome e o de quem mora com você. É rapidinho e ajuda muito na organização.

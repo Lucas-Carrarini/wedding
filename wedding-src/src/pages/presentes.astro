@@ -34,10 +34,10 @@ const giftsWithImages = presentes.map((g: { id: string; nome: string; valor: num
   </style>
 
   <main class="pt-24">
-    <section class="bg-white">
+    <section class="bg-paper">
       <div class="mx-auto max-w-5xl px-4 py-16 sm:py-20">
         <div class="text-center">
-          <h1 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{presentesSection.title}</h1>
+          <h1 class="font-serif text-3xl font-bold tracking-tight text-graphite sm:text-4xl">{presentesSection.title}</h1>
         </div>
 
         <div class="mt-10 grid gap-10 sm:grid-cols-[1fr_320px] sm:items-start">
@@ -48,44 +48,7 @@ const giftsWithImages = presentes.map((g: { id: string; nome: string; valor: num
             <div class="prose prose-neutral max-w-none">
               <PresentesPreferencia />
             </div>
-          </div>
-
-          <div class="rounded-3xl bg-white p-5 shadow-soft sm:p-6">
-            <div class="text-center text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">{presentesSection.qrHelper}</div>
-            <div class="mt-4 overflow-hidden rounded-2xl bg-white">
-              <div
-                role="img"
-                aria-label={presentesSection.qrHelper}
-                class="ll-qr-crop"
-                style={`background-image: url(${qrUrl});`}
-              ></div>
-            </div>
-
-            <dl class="mt-5 space-y-3 text-sm">
-              <div>
-                <dt class="text-neutral-500">Nome</dt>
-                <dd class="font-semibold text-neutral-900">{presentesSection.pixHolderName}</dd>
-              </div>
-              <div>
-                <dt class="text-neutral-500">{presentesSection.pixKeyLabel}</dt>
-                <dd class="font-semibold text-neutral-900">{presentesSection.pixKey}</dd>
-              </div>
-              <div>
-                <dt class="text-neutral-500">{presentesSection.pixInstitutionLabel}</dt>
-                <dd class="font-semibold text-neutral-900">{presentesSection.pixInstitution}</dd>
-              </div>
-            </dl>
-
-            <div class="mt-5">
-              <CopyPixButton
-                client:load
-                payload={presentesSection.pixPayload}
-                label={presentesSection.copyLabel}
-                copiedLabel={presentesSection.copiedLabel}
-              />
-            </div>
-
-            <div class="mt-6 flex justify-center">
+            <div>
               <GiftsModalButton
                 client:load
                 openLabel={presentesSection.seeListButton}
@@ -95,6 +58,27 @@ const giftsWithImages = presentes.map((g: { id: string; nome: string; valor: num
                 whatsappLabel={presentesSection.whatsappButton}
                 whatsappUrl={presentesSection.whatsappUrl}
                 gifts={giftsWithImages}
+              />
+            </div>
+          </div>
+
+          <div class="rounded-3xl bg-paper p-5 shadow-soft sm:p-6">
+            <div class="text-center text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">{presentesSection.qrHelper}</div>
+            <div class="mt-4 overflow-hidden rounded-2xl bg-paper">
+              <div
+                role="img"
+                aria-label={presentesSection.qrHelper}
+                class="ll-qr-crop"
+                style={`background-image: url(${qrUrl});`}
+              ></div>
+            </div>
+
+            <div class="mt-5">
+              <CopyPixButton
+                client:load
+                payload={presentesSection.pixPayload}
+                label={presentesSection.copyLabel}
+                copiedLabel={presentesSection.copiedLabel}
               />
             </div>
           </div>

@@ -64,12 +64,12 @@ export default function MessageBoardForm(props: Props) {
 
   return (
     <div>
-      <div className="font-serif text-2xl font-bold text-white sm:text-3xl">{title}</div>
-      <p className="mt-2 text-sm text-white/70">{subtitle}</p>
+      <div className="font-serif text-2xl font-bold text-cloud sm:text-3xl">{title}</div>
+      <p className="mt-2 text-sm text-cloud/70">{subtitle}</p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
         <div>
-          <label className="block text-xs font-medium uppercase tracking-[0.18em] text-white/60" htmlFor="ll-msg-name">
+          <label className="block text-xs font-medium uppercase tracking-[0.18em] text-cloud/60" htmlFor="ll-msg-name">
             {nameLabel}
           </label>
           <input
@@ -79,12 +79,12 @@ export default function MessageBoardForm(props: Props) {
             onChange={(e) => setName(e.target.value)}
             placeholder={namePlaceholder}
             required
-            className="mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition focus:border-white/40 focus:bg-white/10"
+            className="mt-2 w-full rounded-xl border border-cloud/15 bg-paper/5 px-4 py-3 text-sm text-cloud placeholder-cloud/40 outline-none transition focus:border-cloud/40 focus:bg-paper/10"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium uppercase tracking-[0.18em] text-white/60" htmlFor="ll-msg-message">
+          <label className="block text-xs font-medium uppercase tracking-[0.18em] text-cloud/60" htmlFor="ll-msg-message">
             {messageLabel}
           </label>
           <textarea
@@ -94,7 +94,7 @@ export default function MessageBoardForm(props: Props) {
             placeholder={messagePlaceholder}
             required
             rows={4}
-            className="mt-2 w-full resize-y rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition focus:border-white/40 focus:bg-white/10"
+            className="mt-2 w-full resize-y rounded-xl border border-cloud/15 bg-paper/5 px-4 py-3 text-sm text-cloud placeholder-cloud/40 outline-none transition focus:border-cloud/40 focus:bg-paper/10"
           />
         </div>
 
@@ -103,7 +103,7 @@ export default function MessageBoardForm(props: Props) {
         <button
           type="submit"
           disabled={sending}
-          className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-900 shadow-soft transition hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex rounded-full bg-paper px-6 py-3 text-sm font-semibold text-graphite shadow-soft transition hover:bg-paper/90 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {sending ? sendingLabel : submitLabel}
         </button>
@@ -120,14 +120,14 @@ export default function MessageBoardForm(props: Props) {
           <div
             role="dialog"
             aria-modal="true"
-            className="relative z-10 w-full max-w-md rounded-3xl bg-white p-8 text-center shadow-soft"
+            className="relative z-10 w-full max-w-md rounded-3xl bg-paper p-8 text-center shadow-soft"
           >
-            <div className="font-serif text-2xl font-bold text-neutral-900">{successTitle}</div>
+            <div className="font-serif text-2xl font-bold text-graphite">{successTitle}</div>
             <p className="mt-3 text-sm text-neutral-600">{successMessage}</p>
             <button
               type="button"
               onClick={() => setShowSuccess(false)}
-              className="mt-6 inline-flex rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-neutral-800"
+              className="mt-6 inline-flex rounded-full bg-graphite px-5 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
             >
               {successCloseLabel}
             </button>

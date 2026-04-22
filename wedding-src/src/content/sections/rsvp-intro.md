@@ -1,5 +1,3 @@
 # Confirme sua presença
 
-(Conteúdo de exemplo)
-
-A gente vai amar ter você com a gente nesse dia. Confirme sua presença e, se necessário, confirme também os demais membros da sua casa.
+A gente vai amar ter você com a gente nesse dia. Confirma sua presença no campo abaixo e, se mora com outras pessoas que também foram convidadas, confirma uma de cada vez.

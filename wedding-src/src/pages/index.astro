@@ -72,11 +72,24 @@ const cronogramaWithContent = await Promise.all(
       <div class="absolute inset-0 bg-black/35"></div>
 
       <div class="relative z-10 flex min-h-screen items-center justify-center px-4">
-        <div class="text-center text-white">
-          <div class="font-serif text-6xl font-bold tracking-tight drop-shadow-sm sm:text-7xl">
-            {site.hero.overlay.logo}
+        <div class="text-center text-cloud">
+          <div class="relative mx-auto inline-flex h-28 w-28 items-center justify-center sm:h-36 sm:w-36">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute bottom-1/4 left-1/4 right-0 top-0 border-r-2 border-t-2 border-cloud"
+            ></span>
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute bottom-0 left-0 right-1/4 top-1/4 border-b-2 border-l-2 border-cloud"
+            ></span>
+            <span class="relative font-serif text-5xl font-bold tracking-tight drop-shadow-sm sm:text-6xl">
+              {site.hero.overlay.logo}
+            </span>
           </div>
-          <div class="mt-4 text-xs font-semibold tracking-[0.35em] text-white/90">
+          <div class="mt-6 font-serif text-3xl font-bold tracking-tight drop-shadow-sm sm:text-4xl">
+            {site.hero.overlay.fullName}
+          </div>
+          <div class="mt-3 text-xs font-semibold tracking-[0.35em] text-cloud/90">
             {site.hero.overlay.date}
           </div>
         </div>
@@ -90,11 +103,11 @@ const cronogramaWithContent = await Promise.all(
       labels={site.countdown.labels}
     />
 
-    <section id="historia" class="bg-white scroll-mt-24">
+    <section id="historia" class="bg-paper scroll-mt-24">
       <PhotoCarousel client:load autoplayMs={prewedding.autoplayMs} images={preweddingImages} />
       <div class="mx-auto max-w-6xl px-4 pb-16 sm:pb-20">
         <div class="text-center">
-          <h2 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{historiaSection.title}</h2>
+          <h2 class="font-serif text-3xl font-bold tracking-tight text-graphite sm:text-4xl">{historiaSection.title}</h2>
         </div>
         <div class="prose prose-neutral mx-auto mt-6 max-w-3xl prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl">
           <Historia />
@@ -105,11 +118,11 @@ const cronogramaWithContent = await Promise.all(
     <section id="localizacao" class="bg-cloud scroll-mt-24">
       <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
         <div class="text-center">
-          <h2 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{localizacao.title}</h2>
+          <h2 class="font-serif text-3xl font-bold tracking-tight text-graphite sm:text-4xl">{localizacao.title}</h2>
         </div>
 
         <div class="mt-10 grid gap-6 lg:grid-cols-2 lg:items-stretch">
-          <div class="overflow-hidden rounded-3xl bg-white shadow-soft">
+          <div class="overflow-hidden rounded-3xl bg-paper shadow-soft">
             <iframe
               title="Mapa"
               src={localizacao.map.embedUrl}
@@ -119,11 +132,11 @@ const cronogramaWithContent = await Promise.all(
             ></iframe>
           </div>
 
-          <div class="flex flex-col justify-center rounded-3xl bg-white p-6 shadow-soft sm:p-8">
+          <div class="flex flex-col justify-center rounded-3xl bg-paper p-6 shadow-soft sm:p-8">
             <div class="space-y-5">
               <div>
                 <div class="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-500">{localizacao.labels.arrivalLabel}</div>
-                <div class="mt-1 font-serif text-4xl font-bold text-neutral-900">{localizacao.recommendedArrival}</div>
+                <div class="mt-1 font-serif text-4xl font-bold text-graphite">{localizacao.recommendedArrival}</div>
               </div>
               <div>
                 <div class="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-500">{localizacao.labels.addressLabel}</div>
@@ -143,7 +156,7 @@ const cronogramaWithContent = await Promise.all(
                 fileName={localizacao.event.icsFileName}
               />
               <a
-                class="rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-neutral-800"
+                class="rounded-full bg-graphite px-5 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
                 href={localizacao.map.googleMapsQueryUrl}
                 target="_blank"
                 rel="noreferrer"
@@ -154,7 +167,7 @@ const cronogramaWithContent = await Promise.all(
           </div>
         </div>
 
-        <div class="mt-10 overflow-hidden rounded-3xl bg-white shadow-soft">
+        <div class="mt-10 overflow-hidden rounded-3xl bg-paper shadow-soft">
           <img
             src={valeImageUrl}
             alt={localizacao.venueName}
@@ -166,10 +179,10 @@ const cronogramaWithContent = await Promise.all(
       </div>
     </section>
 
-    <section id="manual" class="bg-white scroll-mt-24">
+    <section id="manual" class="bg-paper scroll-mt-24">
       <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
         <div class="text-center">
-          <h2 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{manualSection.title}</h2>
+          <h2 class="font-serif text-3xl font-bold tracking-tight text-graphite sm:text-4xl">{manualSection.title}</h2>
         </div>
 
         <div class="mt-10">
@@ -181,7 +194,7 @@ const cronogramaWithContent = await Promise.all(
     <section id="cronograma" class="bg-cloud scroll-mt-24">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:py-20">
         <div class="text-center">
-          <h2 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{cronograma.title}</h2>
+          <h2 class="font-serif text-3xl font-bold tracking-tight text-graphite sm:text-4xl">{cronograma.title}</h2>
           <p class="mt-3 text-sm text-neutral-600">{cronograma.subtitle}</p>
         </div>
 
@@ -189,8 +202,8 @@ const cronogramaWithContent = await Promise.all(
           {cronogramaWithContent.map((it) => (
             <li class="grid gap-4 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-8">
               <div class="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-5xl">{it.time}</div>
-              <div class="rounded-2xl bg-white p-6 shadow-soft sm:p-8">
-                <div class="font-serif text-xl font-bold text-neutral-900 sm:text-2xl">{it.label}</div>
+              <div class="rounded-2xl bg-paper p-6 shadow-soft sm:p-8">
+                <div class="font-serif text-xl font-bold text-graphite sm:text-2xl">{it.label}</div>
                 <div
                   class="prose prose-neutral mt-3 max-w-none"
                   set:html={it.contentHtml}

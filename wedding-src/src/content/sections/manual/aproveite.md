@@ -1,5 +1,3 @@
 ## Aproveite
 
-(Conteúdo de exemplo)
-
-Dance, coma, beba, se emocione. A festa é para ser vivida com vocês.
+Come, bebe, dança, chora se der vontade. A festa é nossa, mas só faz sentido se você se sentir em casa.
