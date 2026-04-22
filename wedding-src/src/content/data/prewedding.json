@@ -1,0 +1,31 @@
+{
+  "title": "",
+  "autoplayMs": 2500,
+  "images": [
+    {
+      "id": "pre-01",
+      "alt": "",
+      "url": "https://placehold.co/900x900"
+    },
+    {
+      "id": "pre-02",
+      "alt": "",
+      "url": "https://placehold.co/900x900"
+    },
+    {
+      "id": "pre-03",
+      "alt": "",
+      "url": "https://placehold.co/900x900"
+    },
+    {
+      "id": "pre-04",
+      "alt": "",
+      "url": "https://placehold.co/900x900"
+    },
+    {
+      "id": "pre-05",
+      "alt": "",
+      "url": "https://placehold.co/900x900"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "brand": "L&L",
+  "items": [
+    { "label": "Home", "href": "/" },
+    { "label": "RSVP", "href": "/rsvp" },
+    { "label": "Lista de presentes", "href": "/presentes" }
+  ]
+}

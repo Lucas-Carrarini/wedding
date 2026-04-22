@@ -1,0 +1,29 @@
+{
+  "messageBoard": {
+    "title": "Deixe um recado!",
+    "subtitle": "Um abraço, uma lembrança, um desejo — a gente vai guardar com carinho.",
+    "nameLabel": "Nome",
+    "namePlaceholder": "Seu nome",
+    "messageLabel": "Recado",
+    "messagePlaceholder": "Escreva aqui seu recado para os noivos…",
+    "submitLabel": "Enviar recado",
+    "sendingLabel": "Enviando…",
+    "successTitle": "Recado enviado!",
+    "successMessage": "Obrigado por deixar uma palavra pra gente ♥",
+    "successCloseLabel": "Fechar",
+    "requiredError": "Preencha nome e recado para enviar."
+  },
+  "credits": {
+    "lines": [
+      "Lucas & Letícia",
+      "26 | 07 | 2026",
+      "Rio de Janeiro, RJ",
+      "© 2026 — Todos os direitos reservados"
+    ],
+    "madeBy": {
+      "prefix": "Made by",
+      "name": "Lucas Carrarini",
+      "url": "https://www.linkedin.com/in/lucascarrarini/"
+    }
+  }
+}

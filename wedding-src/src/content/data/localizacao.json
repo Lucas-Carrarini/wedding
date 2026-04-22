@@ -1,0 +1,23 @@
+{
+  "title": "Como chegar",
+  "venueName": "Vale dos Sonhos",
+  "addressFull": "Vale dos Sonhos - Estr. da Batalha, 52 - Campo Grande, Rio de Janeiro - RJ, 23017-390",
+  "addressShort": "Estr. da Batalha, 52 - Campo Grande",
+  "recommendedArrival": "15:30",
+  "valeImage169Url": "/mapa-vale.jpg",
+  "map": {
+    "googleMapsQueryUrl": "https://www.google.com/maps/search/?api=1&query=Vale%20dos%20Sonhos%20Estr.%20da%20Batalha%2C%2052%20-%20Campo%20Grande%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2023017-390",
+    "embedUrl": "https://www.google.com/maps?q=Vale%20dos%20Sonhos%20Estr.%20da%20Batalha%2C%2052%20-%20Campo%20Grande%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2023017-390&output=embed"
+  },
+  "event": {
+    "icsFileName": "casamento-lucas-e-leticia-2026.ics",
+    "eventTitle": "Casamento Lucas & Letícia",
+    "eventDescription": "Cerimônia às 16h. Recomendamos chegar às 15:30 (portão abre 40 min antes)."
+  },
+  "labels": {
+    "arrivalLabel": "Chegue às",
+    "addressLabel": "Endereço",
+    "addToCalendar": "Adicionar à Agenda",
+    "openInMaps": "Abrir no mapa"
+  }
+}

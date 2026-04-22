@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../content/data/site.json';
+import rsvpSection from '../content/data/rsvp-section.json';
+import RsvpIntro from '../content/sections/rsvp-intro.md';
+import RsvpForm from '../components/react/RsvpForm';
+
+const title = `RSVP - ${site.couple.names}`;
+---
+
+<BaseLayout title={title}>
+  <style>
+    @import url('../styles/global.css');
+  </style>
+
+  <main class="pt-24">
+    <section class="bg-white">
+      <div class="mx-auto max-w-3xl px-4 py-16 sm:py-20">
+        <div class="text-center">
+          <h1 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{rsvpSection.title}</h1>
+        </div>
+
+        <div class="mt-8 prose prose-neutral mx-auto max-w-2xl prose-headings:font-serif prose-headings:tracking-tight prose-h1:hidden">
+          <RsvpIntro />
+        </div>
+
+        <div class="mt-8 rounded-3xl bg-white p-6 shadow-soft sm:p-10">
+          <RsvpForm
+            client:load
+            nameLabel={rsvpSection.nameLabel}
+            namePlaceholder={rsvpSection.namePlaceholder}
+            submitLabel={rsvpSection.submitLabel}
+            sendingLabel={rsvpSection.sendingLabel}
+            householdNotice={rsvpSection.householdNotice}
+            successTitle={rsvpSection.successTitle}
+            successMessage={rsvpSection.successMessage}
+            successCloseLabel={rsvpSection.successCloseLabel}
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
