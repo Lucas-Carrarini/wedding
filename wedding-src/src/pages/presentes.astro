@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../content/data/site.json';
+import presentesSection from '../content/data/presentes-section.json';
+import presentes from '../content/data/presentes.json';
+import PresentesIntro from '../content/sections/presentes-intro.md';
+import PresentesPreferencia from '../content/sections/presentes-preferencia.md';
+import GiftsModalButton from '../components/react/GiftsModalButton';
+import CopyPixButton from '../components/react/CopyPixButton';
+import { url } from '../lib/url';
+
+const title = `${presentesSection.title} - ${site.couple.names}`;
+---
+
+<BaseLayout title={title}>
+  <style>
+    @import url('../styles/global.css');
+
+    .ll-qr-crop {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+  </style>
+
+  <main class="pt-24">
+    <section class="bg-white">
+      <div class="mx-auto max-w-5xl px-4 py-16 sm:py-20">
+        <div class="text-center">
+          <h1 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{presentesSection.title}</h1>
+        </div>
+
+        <div class="mt-10 grid gap-10 sm:grid-cols-[1fr_320px] sm:items-start">
+          <div class="space-y-8">
+            <div class="prose prose-neutral max-w-none">
+              <PresentesIntro />
+            </div>
+            <div class="prose prose-neutral max-w-none">
+              <PresentesPreferencia />
+            </div>
+          </div>
+
+          <div class="rounded-3xl bg-white p-5 shadow-soft sm:p-6">
+            <div class="text-center text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">{presentesSection.qrHelper}</div>
+            <div class="mt-4 overflow-hidden rounded-2xl bg-white">
+              <div
+                role="img"
+                aria-label={presentesSection.qrHelper}
+                class="ll-qr-crop"
+                style={`background-image: url(${url(presentesSection.qrCodeImageUrl)});`}
+              ></div>
+            </div>
+
+            <dl class="mt-5 space-y-3 text-sm">
+              <div>
+                <dt class="text-neutral-500">Nome</dt>
+                <dd class="font-semibold text-neutral-900">{presentesSection.pixHolderName}</dd>
+              </div>
+              <div>
+                <dt class="text-neutral-500">{presentesSection.pixKeyLabel}</dt>
+                <dd class="font-semibold text-neutral-900">{presentesSection.pixKey}</dd>
+              </div>
+              <div>
+                <dt class="text-neutral-500">{presentesSection.pixInstitutionLabel}</dt>
+                <dd class="font-semibold text-neutral-900">{presentesSection.pixInstitution}</dd>
+              </div>
+            </dl>
+
+            <div class="mt-5">
+              <CopyPixButton
+                client:load
+                payload={presentesSection.pixPayload}
+                label={presentesSection.copyLabel}
+                copiedLabel={presentesSection.copiedLabel}
+              />
+            </div>
+
+            <div class="mt-6 flex justify-center">
+              <GiftsModalButton
+                client:load
+                openLabel={presentesSection.seeListButton}
+                closeLabel={presentesSection.closeModalButton}
+                modalTitle={presentesSection.modalTitle}
+                wantToGiftText={presentesSection.wantToGiftText}
+                whatsappLabel={presentesSection.whatsappButton}
+                whatsappUrl={presentesSection.whatsappUrl}
+                gifts={presentes}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

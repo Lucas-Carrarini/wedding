@@ -1,0 +1,16 @@
+# Dependencies do projeto Astro (wedding-src)
+wedding-src/node_modules/
+wedding-src/.astro/
+wedding-src/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

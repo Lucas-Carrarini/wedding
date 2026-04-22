@@ -1,0 +1,40 @@
+---
+import footer from '../content/data/footer.json';
+import MessageBoardForm from './react/MessageBoardForm';
+---
+
+<footer class="bg-graphite text-white">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:py-16 md:grid-cols-3 md:gap-12">
+    <div class="md:col-span-2">
+      <MessageBoardForm
+        client:load
+        title={footer.messageBoard.title}
+        subtitle={footer.messageBoard.subtitle}
+        nameLabel={footer.messageBoard.nameLabel}
+        namePlaceholder={footer.messageBoard.namePlaceholder}
+        messageLabel={footer.messageBoard.messageLabel}
+        messagePlaceholder={footer.messageBoard.messagePlaceholder}
+        submitLabel={footer.messageBoard.submitLabel}
+        sendingLabel={footer.messageBoard.sendingLabel}
+        successTitle={footer.messageBoard.successTitle}
+        successMessage={footer.messageBoard.successMessage}
+        successCloseLabel={footer.messageBoard.successCloseLabel}
+        requiredError={footer.messageBoard.requiredError}
+      />
+    </div>
+
+    <div class="flex flex-col gap-1.5 text-sm text-white/70 md:items-end md:text-right">
+      {footer.credits.lines.map((line) => <div>{line}</div>)}
+      <div class="mt-3">
+        <span>{footer.credits.madeBy.prefix} </span>
+        <a
+          href={footer.credits.madeBy.url}
+          target="_blank"
+          rel="noreferrer"
+          class="text-inherit no-underline transition hover:text-white"
+          style="color: inherit; text-decoration: none;"
+        >{footer.credits.madeBy.name}</a>
+      </div>
+    </div>
+  </div>
+</footer>
