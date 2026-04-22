@@ -2,50 +2,20 @@
   {
     "id": "confirmar-presenca",
     "title": "Confirme sua presença",
-    "iconUrl": "https://placehold.co/256x256/png",
     "redirectTo": "/rsvp",
     "redirectLabel": "Ir para a confirmação"
   },
   {
     "id": "escolha-presente",
     "title": "Escolha um presente",
-    "iconUrl": "https://placehold.co/256x256/png",
     "redirectTo": "/presentes",
     "redirectLabel": "Ver lista de presentes"
   },
-  {
-    "id": "dress-code",
-    "title": "Dress code",
-    "iconUrl": "https://placehold.co/256x256/png"
-  },
-  {
-    "id": "cores-que-nao-podem",
-    "title": "Cores que não podem",
-    "iconUrl": "https://placehold.co/256x256/png"
-  },
-  {
-    "id": "silencioso",
-    "title": "Silencioso",
-    "iconUrl": "https://placehold.co/256x256/png"
-  },
-  {
-    "id": "mesa-de-doces",
-    "title": "Mesa de doces",
-    "iconUrl": "https://placehold.co/256x256/png"
-  },
-  {
-    "id": "aproveite",
-    "title": "Aproveite",
-    "iconUrl": "https://placehold.co/256x256/png"
-  },
-  {
-    "id": "nao-leve-decoracao",
-    "title": "Não leve decoração",
-    "iconUrl": "https://placehold.co/256x256/png"
-  },
-  {
-    "id": "de-um-abraco",
-    "title": "Dê um abraço",
-    "iconUrl": "https://placehold.co/256x256/png"
-  }
+  { "id": "dress-code", "title": "Dress code" },
+  { "id": "cores-que-nao-podem", "title": "Cores que não podem" },
+  { "id": "silencioso", "title": "Silencioso" },
+  { "id": "mesa-de-doces", "title": "Mesa de doces" },
+  { "id": "aproveite", "title": "Aproveite" },
+  { "id": "nao-leve-decoracao", "title": "Não leve decoração" },
+  { "id": "de-um-abraco", "title": "Dê um abraço" }
 ]

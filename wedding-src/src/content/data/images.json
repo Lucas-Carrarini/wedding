@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "desktop": { "real": "/images/hero/desktop.jpg", "mockSize": "1920x1080" },
+    "mobile":  { "real": "/images/hero/mobile.jpg",  "mockSize": "1080x1920" }
+  },
+  "prewedding": {
+    "pre-01": { "real": "/images/prewedding/foto-01.jpg", "mockSize": "900x900?text=Foto+1", "alt": "" },
+    "pre-02": { "real": "/images/prewedding/foto-02.jpg", "mockSize": "900x900?text=Foto+2", "alt": "" },
+    "pre-03": { "real": "/images/prewedding/foto-03.jpg", "mockSize": "900x900?text=Foto+3", "alt": "" },
+    "pre-04": { "real": "/images/prewedding/foto-04.jpg", "mockSize": "900x900?text=Foto+4", "alt": "" },
+    "pre-05": { "real": "/images/prewedding/foto-05.jpg", "mockSize": "900x900?text=Foto+5", "alt": "" }
+  },
+  "manual": {
+    "confirmar-presenca":  { "real": "/images/manual/confirmar-presenca.png",  "mockSize": "256x256/png" },
+    "escolha-presente":    { "real": "/images/manual/escolha-presente.png",    "mockSize": "256x256/png" },
+    "dress-code":          { "real": "/images/manual/dress-code.png",          "mockSize": "256x256/png" },
+    "cores-que-nao-podem": { "real": "/images/manual/cores-que-nao-podem.png", "mockSize": "256x256/png" },
+    "silencioso":          { "real": "/images/manual/silencioso.png",          "mockSize": "256x256/png" },
+    "mesa-de-doces":       { "real": "/images/manual/mesa-de-doces.png",       "mockSize": "256x256/png" },
+    "aproveite":           { "real": "/images/manual/aproveite.png",           "mockSize": "256x256/png" },
+    "nao-leve-decoracao":  { "real": "/images/manual/nao-leve-decoracao.png",  "mockSize": "256x256/png" },
+    "de-um-abraco":        { "real": "/images/manual/de-um-abraco.png",        "mockSize": "256x256/png" }
+  },
+  "presentes": {
+    "geladeira":       { "real": "/images/presentes/geladeira.jpg",       "mockSize": "900x900?text=Geladeira" },
+    "forno-eletrico":  { "real": "/images/presentes/forno-eletrico.jpg",  "mockSize": "900x900?text=Forno" },
+    "maquina-de-lavar":{ "real": "/images/presentes/maquina-de-lavar.jpg","mockSize": "900x900?text=Maquina" },
+    "cama-queen":      { "real": "/images/presentes/cama-queen.jpg",      "mockSize": "900x900?text=Cama" },
+    "armario":         { "real": "/images/presentes/armario.jpg",         "mockSize": "900x900?text=Armario" }
+  },
+  "localizacao": {
+    "vale": { "real": "/images/localizacao/vale-dos-sonhos.jpg", "mockSize": "1920x1080?text=Vale+dos+Sonhos" }
+  },
+  "pix": {
+    "qrcode": { "real": "/images/pix/qrcode.png", "mockSize": "800x800/png" }
+  }
+}

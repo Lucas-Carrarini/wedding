@@ -15,7 +15,7 @@ const pathname = basePath && rawPath.startsWith(basePath) ? (rawPath.slice(baseP
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,7 +30,7 @@ const pathname = basePath && rawPath.startsWith(basePath) ? (rawPath.slice(baseP
       id="ll-header"
       class:list={[
         'll-header fixed inset-x-0 top-0 z-30 hidden transition-colors duration-300 md:block',
-        transparentHeader ? 'bg-transparent' : 'bg-white/90 backdrop-blur'
+        transparentHeader ? 'bg-black/25 backdrop-blur-sm' : 'bg-white/90 backdrop-blur'
       ]}
     >
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
@@ -38,19 +38,30 @@ const pathname = basePath && rawPath.startsWith(basePath) ? (rawPath.slice(baseP
           'font-serif text-2xl font-bold tracking-tight',
           transparentHeader ? 'text-white drop-shadow' : 'text-neutral-900'
         ]}>{nav.brand}</a>
-        <nav class="flex items-center gap-5 text-sm font-medium">
-          {nav.items.map((it) => {
-            const active = pathname === it.href || (it.href !== '/' && pathname.startsWith(it.href));
+        <nav class="flex items-center gap-2 text-sm font-medium">
+          {nav.items.map((it, i) => {
+            const active = pathname === it.href || (it.href !== '/' && !it.href.startsWith('/#') && pathname.startsWith(it.href));
             return (
-              <a
-                href={url(it.href)}
-                class:list={[
-                  'transition',
-                  transparentHeader
-                    ? (active ? 'text-white underline underline-offset-4' : 'text-white/90 hover:text-white')
-                    : (active ? 'text-neutral-900 underline underline-offset-4' : 'text-neutral-600 hover:text-neutral-900')
-                ]}
-              >{it.label}</a>
+              <>
+                {i > 0 && (
+                  <span
+                    aria-hidden="true"
+                    class:list={[
+                      'select-none',
+                      transparentHeader ? 'text-white/40' : 'text-neutral-300'
+                    ]}
+                  >|</span>
+                )}
+                <a
+                  href={url(it.href)}
+                  class:list={[
+                    'transition whitespace-nowrap',
+                    transparentHeader
+                      ? (active ? 'text-white underline underline-offset-4' : 'text-white/90 hover:text-white')
+                      : (active ? 'text-neutral-900 underline underline-offset-4' : 'text-neutral-600 hover:text-neutral-900')
+                  ]}
+                >{it.label}</a>
+              </>
             );
           })}
         </nav>
@@ -209,6 +220,11 @@ const pathname = basePath && rawPath.startsWith(basePath) ? (rawPath.slice(baseP
         }
         if (hamb) hamb.addEventListener('click', toggleMenu);
         if (backdrop) backdrop.addEventListener('click', function () { setMenu(false); });
+        if (menu) {
+          menu.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () { setMenu(false); });
+          });
+        }
         document.addEventListener('keydown', function (e) {
           if (e.key === 'Escape' && hamb && hamb.getAttribute('aria-expanded') === 'true') setMenu(false);
         });

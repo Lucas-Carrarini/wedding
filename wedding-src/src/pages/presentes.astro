@@ -7,9 +7,17 @@ import PresentesIntro from '../content/sections/presentes-intro.md';
 import PresentesPreferencia from '../content/sections/presentes-preferencia.md';
 import GiftsModalButton from '../components/react/GiftsModalButton';
 import CopyPixButton from '../components/react/CopyPixButton';
-import { url } from '../lib/url';
+import images from '../content/data/images.json';
+import { resolveImage } from '../lib/image';
 
 const title = `${presentesSection.title} - ${site.couple.names}`;
+
+const qrUrl = resolveImage(images.pix.qrcode);
+
+const giftsWithImages = presentes.map((g: { id: string; nome: string; valor: number }) => {
+  const entry = (images.presentes as Record<string, { real: string; mockSize: string }>)[g.id];
+  return { nome: g.nome, valor: g.valor, fotoUrl: entry ? resolveImage(entry) : '' };
+});
 ---
 
 <BaseLayout title={title}>
@@ -49,7 +57,7 @@ const title = `${presentesSection.title} - ${site.couple.names}`;
                 role="img"
                 aria-label={presentesSection.qrHelper}
                 class="ll-qr-crop"
-                style={`background-image: url(${url(presentesSection.qrCodeImageUrl)});`}
+                style={`background-image: url(${qrUrl});`}
               ></div>
             </div>
 
@@ -86,7 +94,7 @@ const title = `${presentesSection.title} - ${site.couple.names}`;
                 wantToGiftText={presentesSection.wantToGiftText}
                 whatsappLabel={presentesSection.whatsappButton}
                 whatsappUrl={presentesSection.whatsappUrl}
-                gifts={presentes}
+                gifts={giftsWithImages}
               />
             </div>
           </div>

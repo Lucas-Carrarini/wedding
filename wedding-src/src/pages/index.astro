@@ -5,24 +5,38 @@ import Countdown from '../components/react/Countdown';
 import prewedding from '../content/data/prewedding.json';
 import PhotoCarousel from '../components/react/PhotoCarousel';
 import Historia from '../content/sections/historia.md';
+import historiaSection from '../content/data/historia-section.json';
 import localizacao from '../content/data/localizacao.json';
 import AddToCalendarLink from '../components/react/AddToCalendarLink';
 import manualItems from '../content/data/manual.json';
 import manualSection from '../content/data/manual-section.json';
 import ManualGrid from '../components/react/ManualGrid';
 import cronograma from '../content/data/cronograma.json';
+import images from '../content/data/images.json';
 import { url } from '../lib/url';
+import { resolveImage } from '../lib/image';
 
 const title = `${site.couple.names} - ${site.wedding.dateDisplay}`;
+
+const heroDesktopUrl = resolveImage(images.hero.desktop);
+const heroMobileUrl = resolveImage(images.hero.mobile);
+const valeImageUrl = resolveImage(images.localizacao.vale);
+
+const preweddingImages = prewedding.imageIds.map((id: string) => {
+  const entry = (images.prewedding as Record<string, { real: string; mockSize: string; alt?: string }>)[id];
+  return { id, url: resolveImage(entry), alt: entry?.alt ?? '' };
+});
 
 const manualModules = import.meta.glob('../content/sections/manual/*.md', { eager: true }) as Record<string, any>;
 
 const manualWithContent = await Promise.all(
-  manualItems.map(async (it: { id: string; title: string; iconUrl: string; redirectTo?: string; redirectLabel?: string }) => {
+  manualItems.map(async (it: { id: string; title: string; redirectTo?: string; redirectLabel?: string }) => {
     const key = `../content/sections/manual/${it.id}.md`;
     const mod = manualModules[key];
     const html = mod && typeof mod.compiledContent === 'function' ? await mod.compiledContent() : '';
-    return { ...it, contentHtml: html, redirectTo: it.redirectTo ? url(it.redirectTo) : undefined };
+    const imgEntry = (images.manual as Record<string, { real: string; mockSize: string }>)[it.id];
+    const iconUrl = imgEntry ? resolveImage(imgEntry) : '';
+    return { ...it, iconUrl, contentHtml: html, redirectTo: it.redirectTo ? url(it.redirectTo) : undefined };
   })
 );
 
@@ -46,9 +60,9 @@ const cronogramaWithContent = await Promise.all(
   <main>
     <section class="relative min-h-screen">
       <picture class="absolute inset-0">
-        <source media="(min-width: 768px)" srcset={site.hero.image.desktop169Url} />
+        <source media="(min-width: 768px)" srcset={heroDesktopUrl} />
         <img
-          src={site.hero.image.mobile916Url}
+          src={heroMobileUrl}
           alt=""
           class="h-full w-full object-cover object-center"
           loading="eager"
@@ -76,16 +90,19 @@ const cronogramaWithContent = await Promise.all(
       labels={site.countdown.labels}
     />
 
-    <section class="bg-white">
-      <PhotoCarousel client:load autoplayMs={prewedding.autoplayMs} images={prewedding.images} />
+    <section id="historia" class="bg-white scroll-mt-24">
+      <PhotoCarousel client:load autoplayMs={prewedding.autoplayMs} images={preweddingImages} />
       <div class="mx-auto max-w-6xl px-4 pb-16 sm:pb-20">
-        <div class="prose prose-neutral mx-auto max-w-3xl prose-headings:font-serif prose-headings:tracking-tight prose-h1:text-3xl prose-h1:text-neutral-900 prose-h2:text-2xl">
+        <div class="text-center">
+          <h2 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{historiaSection.title}</h2>
+        </div>
+        <div class="prose prose-neutral mx-auto mt-6 max-w-3xl prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl">
           <Historia />
         </div>
       </div>
     </section>
 
-    <section class="bg-cloud">
+    <section id="localizacao" class="bg-cloud scroll-mt-24">
       <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
         <div class="text-center">
           <h2 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{localizacao.title}</h2>
@@ -139,7 +156,7 @@ const cronogramaWithContent = await Promise.all(
 
         <div class="mt-10 overflow-hidden rounded-3xl bg-white shadow-soft">
           <img
-            src={url(localizacao.valeImage169Url)}
+            src={valeImageUrl}
             alt={localizacao.venueName}
             class="block w-full"
             style="aspect-ratio: 16 / 9; object-fit: cover;"
@@ -149,11 +166,10 @@ const cronogramaWithContent = await Promise.all(
       </div>
     </section>
 
-    <section class="bg-white">
+    <section id="manual" class="bg-white scroll-mt-24">
       <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
         <div class="text-center">
           <h2 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{manualSection.title}</h2>
-          <p class="mt-3 text-sm text-neutral-600">{manualSection.subtitle}</p>
         </div>
 
         <div class="mt-10">
@@ -162,7 +178,7 @@ const cronogramaWithContent = await Promise.all(
       </div>
     </section>
 
-    <section class="bg-cloud">
+    <section id="cronograma" class="bg-cloud scroll-mt-24">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:py-20">
         <div class="text-center">
           <h2 class="font-serif text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{cronograma.title}</h2>
@@ -171,7 +187,7 @@ const cronogramaWithContent = await Promise.all(
 
         <ol class="mt-12 space-y-10">
           {cronogramaWithContent.map((it) => (
-            <li class="grid gap-4 sm:grid-cols-[120px_1fr] sm:gap-8">
+            <li class="grid gap-4 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-8">
               <div class="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-5xl">{it.time}</div>
               <div class="rounded-2xl bg-white p-6 shadow-soft sm:p-8">
                 <div class="font-serif text-xl font-bold text-neutral-900 sm:text-2xl">{it.label}</div>

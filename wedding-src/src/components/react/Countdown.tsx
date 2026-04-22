@@ -50,18 +50,30 @@ export default function Countdown({ targetISO, title, labels }: Props) {
         </div>
 
         <div className="mx-auto mt-10 max-w-3xl">
-          <div className="flex items-end justify-center gap-4 sm:gap-8">
+          <div className="flex items-end justify-center gap-3 sm:gap-5">
             <div className="text-center">
               <div className="font-serif text-6xl font-bold leading-none text-brand-500 sm:text-7xl">{pad2(parts.days)}</div>
               <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-600">{labels.days}</div>
+            </div>
+            <div className="text-center" aria-hidden="true">
+              <div className="font-serif text-6xl font-bold leading-none text-brand-500 sm:text-7xl">-</div>
+              <div className="mt-2 select-none text-[11px] opacity-0">.</div>
             </div>
             <div className="text-center">
               <div className="font-serif text-6xl font-bold leading-none text-brand-500 sm:text-7xl">{pad2(parts.hours)}</div>
               <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-600">{labels.hours}</div>
             </div>
+            <div className="text-center" aria-hidden="true">
+              <div className="font-serif text-6xl font-bold leading-none text-brand-500 sm:text-7xl">:</div>
+              <div className="mt-2 select-none text-[11px] opacity-0">.</div>
+            </div>
             <div className="text-center">
               <div className="font-serif text-6xl font-bold leading-none text-brand-500 sm:text-7xl">{pad2(parts.minutes)}</div>
               <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-600">{labels.minutes}</div>
+            </div>
+            <div className="text-center" aria-hidden="true">
+              <div className="font-serif text-6xl font-bold leading-none text-brand-500 sm:text-7xl">:</div>
+              <div className="mt-2 select-none text-[11px] opacity-0">.</div>
             </div>
             <div className="text-center">
               <div className="font-serif text-6xl font-bold leading-none text-brand-500 sm:text-7xl">{pad2(parts.seconds)}</div>
