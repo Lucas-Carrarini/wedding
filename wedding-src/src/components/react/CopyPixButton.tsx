@@ -35,7 +35,7 @@ export default function CopyPixButton({ payload, label, copiedLabel }: Props) {
     <button
       type="button"
       onClick={handleCopy}
-      className="inline-flex w-full items-center justify-center rounded-full bg-neutral-900 px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-neutral-800"
+      className="inline-flex w-full items-center justify-center rounded-full bg-graphite px-4 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
     >
       {copied ? copiedLabel : label}
     </button>

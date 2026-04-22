@@ -108,11 +108,11 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
   if (count === 0) return null;
 
   return (
-    <section className="bg-white">
+    <section className="bg-paper">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
         <div className="relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent sm:w-24" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent sm:w-24" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-paper to-transparent sm:w-24" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-paper to-transparent sm:w-24" />
 
           <div className="overflow-hidden">
             <div

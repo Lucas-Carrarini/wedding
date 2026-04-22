@@ -1,5 +1,3 @@
 ## Dê um abraço
 
-(Conteúdo de exemplo)
-
-Em algum momento da festa, encontre a gente e dê um abraço. Queremos registrar esse carinho com você.
+Em algum momento da noite, acha a gente e dá um abraço apertado. Pode ser o único pedido que a gente faz de verdade.

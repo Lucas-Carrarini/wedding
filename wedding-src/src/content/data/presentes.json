@@ -1,27 +1,7 @@
 [
-  {
-    "nome": "Geladeira",
-    "valor": 4500.0,
-    "fotoUrl": "https://placehold.co/900x900"
-  },
-  {
-    "nome": "Forno elétrico",
-    "valor": 1800.0,
-    "fotoUrl": "https://placehold.co/900x900"
-  },
-  {
-    "nome": "Máquina de lavar",
-    "valor": 3200.0,
-    "fotoUrl": "https://placehold.co/900x900"
-  },
-  {
-    "nome": "Cama queen",
-    "valor": 2600.0,
-    "fotoUrl": "https://placehold.co/900x900"
-  },
-  {
-    "nome": "Armário",
-    "valor": 2100.0,
-    "fotoUrl": "https://placehold.co/900x900"
-  }
+  { "id": "geladeira",        "nome": "Geladeira",       "valor": 4500.0 },
+  { "id": "forno-eletrico",   "nome": "Forno elétrico",  "valor": 1800.0 },
+  { "id": "maquina-de-lavar", "nome": "Máquina de lavar","valor": 3200.0 },
+  { "id": "cama-queen",       "nome": "Cama queen",      "valor": 2600.0 },
+  { "id": "armario",          "nome": "Armário",         "valor": 2100.0 }
 ]

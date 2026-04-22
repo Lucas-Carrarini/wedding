@@ -1,5 +1,3 @@
 ## Escolha um presente
 
-(Conteúdo de exemplo)
-
-Nossa preferência é por **PIX**, mas separamos uma página com QR Code, dados bancários e uma lista curta de itens que ainda precisamos para começar essa nova fase.
+Se quiser dar um presente pra gente, nossa preferência é por PIX. Também deixamos uma lista curtinha com o que ainda falta pra nossa casa.

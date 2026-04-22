@@ -51,7 +51,7 @@ export default function RsvpForm(props: Props) {
 
   const buttonBase =
     'inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold shadow-soft transition-all duration-300';
-  const buttonActive = 'bg-brand-500 text-white hover:opacity-90';
+  const buttonActive = 'bg-brand-500 text-cloud hover:opacity-90';
   const buttonDisabled = 'bg-neutral-200 text-neutral-400 opacity-60 grayscale cursor-not-allowed';
 
   return (
@@ -69,7 +69,7 @@ export default function RsvpForm(props: Props) {
             placeholder={namePlaceholder}
             required
             autoComplete="name"
-            className="mt-2 w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900 placeholder-neutral-400 outline-none transition focus:border-neutral-400 focus:ring-2 focus:ring-neutral-200"
+            className="mt-2 w-full rounded-xl border border-neutral-200 bg-paper px-4 py-3 text-sm text-graphite placeholder-neutral-400 outline-none transition focus:border-neutral-400 focus:ring-2 focus:ring-neutral-200"
           />
         </div>
 
@@ -96,14 +96,14 @@ export default function RsvpForm(props: Props) {
           <div
             role="dialog"
             aria-modal="true"
-            className="relative z-10 w-full max-w-md rounded-3xl bg-white p-8 text-center shadow-soft"
+            className="relative z-10 w-full max-w-md rounded-3xl bg-paper p-8 text-center shadow-soft"
           >
-            <div className="font-serif text-2xl font-bold text-neutral-900">{successTitle}</div>
+            <div className="font-serif text-2xl font-bold text-graphite">{successTitle}</div>
             <p className="mt-3 text-sm text-neutral-600">{successMessage}</p>
             <button
               type="button"
               onClick={() => setShowSuccess(false)}
-              className="mt-6 inline-flex rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-neutral-800"
+              className="mt-6 inline-flex rounded-full bg-graphite px-5 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
             >
               {successCloseLabel}
             </button>

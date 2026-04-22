@@ -1,11 +1,5 @@
 {
   "title": "Lista de presentes",
-  "qrCodeImageUrl": "/pix-original.png",
-  "pixHolderName": "Lucas Carrarini",
-  "pixKeyLabel": "CPF",
-  "pixKey": "***.667.417-**",
-  "pixInstitutionLabel": "Instituição",
-  "pixInstitution": "Mercado Pago",
   "qrHelper": "Escaneie o QR Code para fazer o Pix",
   "pixPayload": "00020126330014br.gov.bcb.pix0111165667417395204000053039865802BR5915Lucas Carrarini6009Sao Paulo62230519daqr5351201903850206304EF01",
   "copyLabel": "Copiar código PIX",

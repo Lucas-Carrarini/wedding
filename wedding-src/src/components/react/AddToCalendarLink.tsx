@@ -45,7 +45,7 @@ export default function AddToCalendarLink({ label, title, location, description,
 
   return (
     <a
-      className="rounded-full bg-white/90 px-5 py-3 text-sm font-semibold text-neutral-900 shadow-soft transition hover:bg-white"
+      className="rounded-full bg-paper/90 px-5 py-3 text-sm font-semibold text-graphite shadow-soft transition hover:bg-paper"
       href={href}
       download={fileName}
     >

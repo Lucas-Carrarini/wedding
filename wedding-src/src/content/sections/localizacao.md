@@ -1,8 +1,3 @@
-# Localização & logística
+# Localização
 
-(Conteúdo de exemplo)
-
-- Endereço: (preencher)
-- Horário: (preencher)
-- Pontos de referência: (preencher)
-- Dicas de trajeto: (preencher)
+Endereço, horário e detalhes do trajeto ficam na seção "Como chegar" da página principal.

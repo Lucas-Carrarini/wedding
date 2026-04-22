@@ -1,5 +1,3 @@
 ## Dress code
 
-(Conteúdo de exemplo)
-
-Traje **esporte fino**. Conforto também importa — será um dia longo e queremos você à vontade.
+Traje esporte fino. Capricha, mas vem confortável. O dia vai ser longo e a gente quer você bem à vontade.

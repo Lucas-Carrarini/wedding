@@ -1,3 +1,3 @@
-(Conteúdo de exemplo)
+## Cerimônia
 
-O momento mais aguardado: a **cerimônia**. Uma celebração simples e emocionada — peça para o celular ficar no modo silencioso e curta cada segundo com a gente.
+O momento que a gente esperou. Vem de coração aberto e fica com a gente até o fim.

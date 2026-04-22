@@ -1,5 +1,3 @@
 ## Não leve decoração
 
-(Conteúdo de exemplo)
-
-A decoração do salão foi pensada com carinho. Por favor, não retire flores ou objetos das mesas — eles fazem parte do cenário.
+Cada detalhe do salão foi escolhido com carinho. Pedimos que as flores e os objetos das mesas fiquem onde estão. Eles fazem parte do cenário da festa.
