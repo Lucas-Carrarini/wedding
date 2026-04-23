@@ -49,8 +49,8 @@ export default function Countdown({ targetISO, title, labels }: Props) {
           <p className="text-xs font-semibold tracking-[0.22em] text-neutral-700 sm:text-sm">{title}</p>
         </div>
 
-        <div className="mx-auto mt-10 max-w-3xl">
-          <div className="flex items-stretch justify-center gap-2 sm:gap-4">
+        <div className="mx-auto mt-10 max-w-xl">
+          <div className="grid grid-cols-4 gap-2 sm:gap-4">
             {[
               { value: pad2(parts.days), label: labels.days },
               { value: pad2(parts.hours), label: labels.hours },
@@ -59,10 +59,10 @@ export default function Countdown({ targetISO, title, labels }: Props) {
             ].map((unit) => (
               <div
                 key={unit.label}
-                className="flex min-w-[68px] flex-col items-center justify-center rounded-2xl bg-paper px-3 py-4 shadow-soft sm:min-w-[110px] sm:rounded-3xl sm:px-6 sm:py-6"
+                className="flex aspect-square flex-col items-center justify-center rounded-2xl bg-paper p-2 shadow-soft sm:aspect-auto sm:rounded-3xl sm:p-6"
               >
-                <div className="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-6xl">{unit.value}</div>
-                <div className="mt-2 text-[10px] font-medium uppercase tracking-[0.18em] text-neutral-600 sm:mt-3 sm:text-xs">{unit.label}</div>
+                <div className="font-serif text-3xl font-bold leading-none text-brand-500 sm:text-6xl">{unit.value}</div>
+                <div className="mt-1.5 text-center text-[9px] font-medium uppercase tracking-[0.14em] text-neutral-600 sm:mt-3 sm:text-xs sm:tracking-[0.18em]">{unit.label}</div>
               </div>
             ))}
           </div>
