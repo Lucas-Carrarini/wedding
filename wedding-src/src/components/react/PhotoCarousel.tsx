@@ -108,39 +108,33 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
   if (count === 0) return null;
 
   return (
-    <section className="bg-paper">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-        <div className="relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-paper to-transparent sm:w-24" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-paper to-transparent sm:w-24" />
+    <div className="mx-auto max-w-6xl px-4">
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-paper to-transparent sm:w-24" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-paper to-transparent sm:w-24" />
 
-          <div className="overflow-hidden">
-            <div
-              className="will-change-transform flex gap-4"
-              style={{
-                transitionDuration: animate ? '700ms' : '0ms',
-                transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
-              }}
-              ref={trackRef}
-            >
-              {loopImages.map((img, i) => (
-                <div
-                  key={`${img.id}-${i}`}
-                  data-slide="true"
-                  className="shrink-0 rounded-2xl bg-neutral-100 shadow-soft overflow-hidden"
-                  style={{ width: '70vw', maxWidth: 420, aspectRatio: '1 / 1' }}
-                >
-                  <img src={img.url} alt={img.alt} className="h-full w-full object-cover" loading="lazy" />
-                </div>
-              ))}
-            </div>
+        <div className="overflow-hidden">
+          <div
+            className="will-change-transform flex gap-4"
+            style={{
+              transitionDuration: animate ? '700ms' : '0ms',
+              transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            }}
+            ref={trackRef}
+          >
+            {loopImages.map((img, i) => (
+              <div
+                key={`${img.id}-${i}`}
+                data-slide="true"
+                className="shrink-0 rounded-2xl bg-neutral-100 shadow-soft overflow-hidden"
+                style={{ width: '70vw', maxWidth: 420, aspectRatio: '1 / 1' }}
+              >
+                <img src={img.url} alt={img.alt} className="h-full w-full object-cover" loading="lazy" />
+              </div>
+            ))}
           </div>
         </div>
-
-        <div className="mt-10 prose prose-neutral mx-auto max-w-3xl">
-          {/* markdown entra no Astro, não aqui (sem conteúdo hardcoded em TSX) */}
-        </div>
       </div>
-    </section>
+    </div>
   );
 }
