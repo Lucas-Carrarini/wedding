@@ -207,6 +207,9 @@ const cronogramaWithContent = await Promise.all(
       <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
         <div class="text-center">
           <h2 class="font-serif text-3xl font-bold tracking-tight text-graphite sm:text-4xl">{manualSection.title}</h2>
+          {manualSection.description && (
+            <p class="mx-auto mt-4 max-w-2xl text-base text-neutral-700 sm:text-lg">{manualSection.description}</p>
+          )}
         </div>
 
         <div class="mt-10">
