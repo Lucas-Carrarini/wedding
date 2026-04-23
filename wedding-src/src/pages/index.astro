@@ -8,7 +8,6 @@ import Historia from '../content/sections/historia.md';
 import historiaSection from '../content/data/historia-section.json';
 import localizacao from '../content/data/localizacao.json';
 import AddToCalendarLink from '../components/react/AddToCalendarLink';
-import MapLink from '../components/react/MapLink';
 import manualItems from '../content/data/manual.json';
 import manualSection from '../content/data/manual-section.json';
 import ManualGrid from '../components/react/ManualGrid';
@@ -155,17 +154,20 @@ const cronogramaWithContent = await Promise.all(
                 <div class="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-500">{localizacao.labels.addressLabel}</div>
                 <div class="mt-1 text-base text-neutral-800">{localizacao.addressShort}</div>
               </div>
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <img src="/images/icons/car.svg" alt="Estacionamento" class="h-5 w-5 text-graphite" />
-                  <span class="text-sm text-neutral-700">{localizacao.labels.parkingLabel}</span>
-                </div>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 shrink-0 text-graphite" aria-hidden="true">
+                  <rect width="18" height="18" x="3" y="3" rx="2" />
+                  <path d="M9 17V7h4a3 3 0 0 1 0 6H9" />
+                </svg>
+                <span class="text-sm text-neutral-700">{localizacao.labels.parkingLabel}</span>
               </div>
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <img src="/images/icons/gate.svg" alt="Portão" class="h-5 w-5 text-graphite" />
-                  <span class="text-sm text-neutral-700">{localizacao.labels.gateLabel}</span>
-                </div>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 shrink-0 text-graphite" aria-hidden="true">
+                  <path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14" />
+                  <path d="M2 20h20" />
+                  <path d="M14 12v.01" />
+                </svg>
+                <span class="text-sm text-neutral-700">{localizacao.labels.gateLabel}</span>
               </div>
             </div>
 
@@ -180,13 +182,14 @@ const cronogramaWithContent = await Promise.all(
                 endISO={'2026-07-26T20:00:00-03:00'}
                 fileName={localizacao.event.icsFileName}
               />
-              <MapLink
-                client:load
-                href={localizacao.map.googleMapsQueryUrl}
+              <a
                 class="rounded-full bg-graphite px-5 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
+                href={localizacao.map.googleMapsQueryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {localizacao.labels.openInMaps}
-              </MapLink>
+              </a>
             </div>
           </div>
         </div>
