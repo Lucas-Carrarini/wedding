@@ -33,12 +33,8 @@ const pathname = basePath && rawPath.startsWith(basePath) ? (rawPath.slice(baseP
         transparentHeader ? 'bg-black/25 backdrop-blur-sm' : 'bg-paper/95 backdrop-blur shadow-soft'
       ]}
     >
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:py-4">
-        <a href={url('/')} class:list={[
-          'font-serif text-xl font-bold tracking-tight sm:text-2xl',
-          transparentHeader ? 'text-cloud drop-shadow' : 'text-graphite'
-        ]}>{nav.brand}</a>
-        <nav class="flex items-center gap-1 text-xs font-medium sm:gap-2 sm:text-sm">
+      <div class="mx-auto flex max-w-6xl items-center justify-center px-2 py-3 sm:px-4 sm:py-4">
+        <nav class="flex min-w-0 items-center justify-center gap-1.5 text-[13px] font-medium sm:gap-3 sm:text-sm">
           {nav.items.map((it, i) => {
             const active = pathname === it.href || (it.href !== '/' && !it.href.startsWith('/#') && pathname.startsWith(it.href));
             return (
@@ -55,7 +51,7 @@ const pathname = basePath && rawPath.startsWith(basePath) ? (rawPath.slice(baseP
                 <a
                   href={url(it.href)}
                   class:list={[
-                    'transition whitespace-nowrap px-1 sm:px-2',
+                    'transition whitespace-nowrap',
                     transparentHeader
                       ? (active ? 'text-cloud underline underline-offset-4' : 'text-cloud/90 hover:text-cloud')
                       : (active ? 'text-graphite underline underline-offset-4' : 'text-neutral-600 hover:text-graphite')
