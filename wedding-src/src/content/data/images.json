@@ -1,14 +1,18 @@
 {
   "hero": {
-    "desktop": { "real": "/images/hero/desktop.jpg", "mockSize": "1920x1080" },
-    "mobile":  { "real": "/images/hero/mobile.jpg",  "mockSize": "1080x1920" }
+    "desktop": { "real": "/images/hero/desktop.png", "mockSize": "1920x1080" },
+    "mobile":  { "real": "/images/hero/mobile.png",  "mockSize": "1080x1920" }
   },
   "prewedding": {
-    "pre-01": { "real": "/images/prewedding/foto-01.jpg", "mockSize": "900x900?text=Foto+1", "alt": "" },
-    "pre-02": { "real": "/images/prewedding/foto-02.jpg", "mockSize": "900x900?text=Foto+2", "alt": "" },
-    "pre-03": { "real": "/images/prewedding/foto-03.jpg", "mockSize": "900x900?text=Foto+3", "alt": "" },
-    "pre-04": { "real": "/images/prewedding/foto-04.jpg", "mockSize": "900x900?text=Foto+4", "alt": "" },
-    "pre-05": { "real": "/images/prewedding/foto-05.jpg", "mockSize": "900x900?text=Foto+5", "alt": "" }
+    "pre-01": { "real": "/images/prewedding/foto-01.png", "mockSize": "900x900?text=Foto+1", "alt": "" },
+    "pre-02": { "real": "/images/prewedding/foto-02.png", "mockSize": "900x900?text=Foto+2", "alt": "" },
+    "pre-03": { "real": "/images/prewedding/foto-03.png", "mockSize": "900x900?text=Foto+3", "alt": "" },
+    "pre-04": { "real": "/images/prewedding/foto-04.png", "mockSize": "900x900?text=Foto+4", "alt": "" },
+    "pre-05": { "real": "/images/prewedding/foto-05.png", "mockSize": "900x900?text=Foto+5", "alt": "" },
+    "pre-06": { "real": "/images/prewedding/foto-06.png", "mockSize": "900x900?text=Foto+6", "alt": "" },
+    "pre-07": { "real": "/images/prewedding/foto-07.png", "mockSize": "900x900?text=Foto+7", "alt": "" },
+    "pre-08": { "real": "/images/prewedding/foto-08.png", "mockSize": "900x900?text=Foto+8", "alt": "" },
+    "pre-09": { "real": "/images/prewedding/foto-09.png", "mockSize": "900x900?text=Foto+9", "alt": "" }
   },
   "manual": {
     "confirmar-presenca":  { "real": "/images/manual/confirmar-presenca.png",  "mockSize": "256x256/png" },
