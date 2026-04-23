@@ -27,7 +27,7 @@ function renderPanel(it: Item) {
   return (
     <div className="mt-3 rounded-2xl bg-paper p-5 shadow-soft sm:mt-4 sm:p-6">
       <div
-        className="prose prose-neutral max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:mt-0 prose-h2:text-xl sm:prose-h2:text-2xl"
+        className="prose prose-neutral max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:mt-0 prose-h2:text-xl prose-h2:font-bold sm:prose-h2:text-2xl"
         dangerouslySetInnerHTML={{ __html: it.contentHtml }}
       />
       {it.redirectTo && it.redirectLabel ? (
