@@ -121,9 +121,9 @@ export default function ManualGrid({ items }: Props) {
 
       <style>{`
         @keyframes ll-manual-pulse-kf {
-          0%   { box-shadow: inset 0 0 0 2px rgba(217, 119, 6, 0.55); }
-          70%  { box-shadow: inset 0 0 0 14px rgba(217, 119, 6, 0); }
-          100% { box-shadow: inset 0 0 0 14px rgba(217, 119, 6, 0); }
+          0%   { box-shadow: inset 0 0 0 2px rgba(219, 192, 81, 0.7); }
+          70%  { box-shadow: inset 0 0 0 14px rgba(219, 192, 81, 0); }
+          100% { box-shadow: inset 0 0 0 14px rgba(219, 192, 81, 0); }
         }
         .ll-manual-pulse {
           animation: ll-manual-pulse-kf 1.8s ease-out infinite;
