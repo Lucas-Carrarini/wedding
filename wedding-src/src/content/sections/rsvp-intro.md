@@ -1,3 +1,3 @@
-# Confirme sua presença
+# Sua presença é muito importante
 
-A gente vai amar ter você com a gente nesse dia. Confirma sua presença no campo abaixo e, se mora com outras pessoas que também foram convidadas, confirma uma de cada vez.
+Escolhemos cada convidado a dedo, com muito carinho — e contar com você nesse dia faz toda a diferença pra gente. Pedimos que confirme o quanto antes, aqui pelo site ou nos mandando uma mensagem. Se mora com outras pessoas que também receberam o convite, confirme cada uma delas no campo abaixo, uma por vez.
