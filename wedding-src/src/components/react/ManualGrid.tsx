@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 const AUTO_PLAY_INTERVAL_MS = 3000;
+const AUTO_PLAY_RESTART_DELAY_MS = 10000;
+const MAX_AUTO_PLAY_CYCLES = 3;
 
 type Item = {
   id: string;
@@ -49,6 +51,8 @@ export default function ManualGrid({ items }: Props) {
   const [closingItem, setClosingItem] = useState<Item | null>(null);
   const [autoPlay, setAutoPlay] = useState(true);
   const [autoIndex, setAutoIndex] = useState(0);
+  const [autoPlayCycles, setAutoPlayCycles] = useState(0);
+  const [lastInteractionTime, setLastInteractionTime] = useState<number>(Date.now());
   const openItemRef = useRef<Item | null>(null);
   openItemRef.current = openItem;
 
@@ -62,6 +66,24 @@ export default function ManualGrid({ items }: Props) {
     return () => window.clearInterval(id);
   }, [autoPlay, items.length]);
 
+  // Timer para reiniciar auto-play após 10s sem interação
+  useEffect(() => {
+    if (autoPlay || autoPlayCycles >= MAX_AUTO_PLAY_CYCLES) return;
+    
+    const checkRestart = () => {
+      const now = Date.now();
+      const timeSinceLastInteraction = now - lastInteractionTime;
+      
+      if (timeSinceLastInteraction >= AUTO_PLAY_RESTART_DELAY_MS && !openItem) {
+        setAutoPlay(true);
+        setAutoPlayCycles(prev => prev + 1);
+      }
+    };
+
+    const id = window.setInterval(checkRestart, 1000);
+    return () => window.clearInterval(id);
+  }, [autoPlay, autoPlayCycles, lastInteractionTime, openItem, items.length]);
+
   useEffect(() => {
     if (!autoPlay || items.length === 0) return;
     const next = items[autoIndex];
@@ -72,7 +94,13 @@ export default function ManualGrid({ items }: Props) {
   }, [autoIndex, autoPlay, items]);
 
   const onItemClick = (it: Item) => {
-    if (autoPlay) setAutoPlay(false);
+    setLastInteractionTime(Date.now());
+    
+    if (autoPlay) {
+      setAutoPlay(false);
+      setAutoPlayCycles(0); // Reset contador quando há interação manual
+    }
+    
     if (openItem?.id === it.id) {
       setClosingItem(it);
       setOpenItem(null);

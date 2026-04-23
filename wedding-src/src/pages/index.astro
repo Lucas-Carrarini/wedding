@@ -8,6 +8,7 @@ import Historia from '../content/sections/historia.md';
 import historiaSection from '../content/data/historia-section.json';
 import localizacao from '../content/data/localizacao.json';
 import AddToCalendarLink from '../components/react/AddToCalendarLink';
+import MapLink from '../components/react/MapLink';
 import manualItems from '../content/data/manual.json';
 import manualSection from '../content/data/manual-section.json';
 import ManualGrid from '../components/react/ManualGrid';
@@ -123,6 +124,14 @@ const cronogramaWithContent = await Promise.all(
       <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
         <div class="text-center">
           <h2 class="font-serif text-3xl font-bold tracking-tight text-graphite sm:text-4xl">{localizacao.title}</h2>
+          <p class="mx-auto mt-6 max-w-2xl text-base text-graphite sm:text-lg">
+            Esse dia especial acontecerá na casa de festas Vale dos Sonhos (<a
+              href="https://www.instagram.com/valedossonhos"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-semibold text-olive underline decoration-olive/30 underline-offset-4 transition hover:decoration-olive"
+            >@valedossonhos</a>).
+          </p>
         </div>
 
         <div class="mt-10 grid gap-6 lg:grid-cols-2 lg:items-stretch">
@@ -146,6 +155,18 @@ const cronogramaWithContent = await Promise.all(
                 <div class="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-500">{localizacao.labels.addressLabel}</div>
                 <div class="mt-1 text-base text-neutral-800">{localizacao.addressShort}</div>
               </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <img src="/images/icons/car.svg" alt="Estacionamento" class="h-5 w-5 text-graphite" />
+                  <span class="text-sm text-neutral-700">{localizacao.labels.parkingLabel}</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <img src="/images/icons/gate.svg" alt="Portão" class="h-5 w-5 text-graphite" />
+                  <span class="text-sm text-neutral-700">{localizacao.labels.gateLabel}</span>
+                </div>
+              </div>
             </div>
 
             <div class="mt-8 flex flex-wrap gap-3">
@@ -159,14 +180,13 @@ const cronogramaWithContent = await Promise.all(
                 endISO={'2026-07-26T20:00:00-03:00'}
                 fileName={localizacao.event.icsFileName}
               />
-              <a
-                class="rounded-full bg-graphite px-5 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
+              <MapLink
+                client:load
                 href={localizacao.map.googleMapsQueryUrl}
-                target="_blank"
-                rel="noreferrer"
+                class="rounded-full bg-graphite px-5 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
               >
                 {localizacao.labels.openInMaps}
-              </a>
+              </MapLink>
             </div>
           </div>
         </div>
