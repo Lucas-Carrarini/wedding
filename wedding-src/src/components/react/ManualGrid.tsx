@@ -29,7 +29,7 @@ function renderPanel(it: Item) {
   return (
     <div className="mt-3 rounded-2xl bg-paper p-5 shadow-soft sm:mt-4 sm:p-6">
       <div
-        className="prose prose-neutral max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:mt-0 prose-h2:text-xl prose-h2:font-bold sm:prose-h2:text-2xl"
+        className="text-[15px] leading-relaxed text-neutral-700 sm:text-base [&_h2]:mt-0 [&_h2]:mb-3 [&_h2]:font-serif [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-graphite sm:[&_h2]:mb-4 sm:[&_h2]:text-3xl [&_strong]:font-semibold [&_strong]:text-graphite [&_p]:mb-0"
         dangerouslySetInnerHTML={{ __html: it.contentHtml }}
       />
       {it.redirectTo && it.redirectLabel ? (
