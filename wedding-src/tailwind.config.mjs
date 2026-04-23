@@ -11,7 +11,7 @@ export default {
         // Paleta oficial do casamento L&L (uso moderado)
         cloud: '#F1F0EC',    // cloud dancer — fundo principal
         paper: '#FAF9F4',    // off-white harmônico com cloud — cards e superfícies claras
-        graphite: '#2a2e21', // verde muito escuro (brand.900) — texto principal e dark sections
+        graphite: '#3d4a2d', // verde oliva escuro — texto principal e dark sections
         orchid: '#FEE0F2',   // rosa orquídea — accent suave
         sage: '#BFC893',     // verde claro — accent secundário
         olive: '#859366',    // verde escuro — CTAs, numerais, destaque primário
