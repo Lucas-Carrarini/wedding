@@ -4,7 +4,7 @@
   "namePlaceholder": "Digite seu nome como no convite",
   "submitLabel": "Confirmar presença",
   "sendingLabel": "Confirmando…",
-  "householdNotice": "Se mora com outras pessoas que também receberam o convite, confirme cada uma delas aqui, uma por vez.",
+  "householdNotice": "Se mora com outras pessoas que <strong>também receberam o convite</strong>, confirme cada uma delas aqui, <strong>uma por vez</strong>.",
   "successTitle": "Presença confirmada!",
   "successMessage": "A gente mal pode esperar pra te ver lá. Até 26/07/2026 ♥",
   "successCloseLabel": "Fechar"
