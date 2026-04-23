@@ -23,24 +23,22 @@ import MessageBoardForm from './react/MessageBoardForm';
       />
     </div>
 
-    <div class="mt-12 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-sm text-cloud/70">
-      {footer.credits.lines.map((line, i) => (
-        <>
-          {i > 0 && <span aria-hidden="true" class="text-cloud/30">-</span>}
-          <span>{line}</span>
-        </>
-      ))}
-      <span aria-hidden="true" class="text-cloud/30">-</span>
-      <span>
+    <div class="mt-12 flex flex-col items-center gap-1 text-center text-sm text-cloud/70">
+      <div class="flex flex-wrap items-center justify-center gap-x-3">
+        <span>{footer.credits.couple}</span>
+        <span aria-hidden="true" class="text-cloud/30">-</span>
+        <span>{footer.credits.date}</span>
+      </div>
+      <div>{footer.credits.creditLine}</div>
+      <div>
         {footer.credits.madeBy.prefix}{' '}
         <a
           href={footer.credits.madeBy.url}
           target="_blank"
-          rel="noreferrer"
-          class="text-inherit no-underline transition hover:text-cloud"
-          style="color: inherit; text-decoration: none;"
+          rel="noopener noreferrer"
+          class="font-bold text-cloud transition hover:text-cloud/80"
         >{footer.credits.madeBy.name}</a>
-      </span>
+      </div>
     </div>
   </div>
 </footer>

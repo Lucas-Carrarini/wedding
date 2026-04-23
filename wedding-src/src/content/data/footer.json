@@ -14,12 +14,9 @@
     "requiredError": "Preencha nome e recado para enviar."
   },
   "credits": {
-    "lines": [
-      "Lucas & Letícia",
-      "26 | 07 | 2026",
-      "Rio de Janeiro, RJ",
-      "© 2026 Todos os direitos reservados"
-    ],
+    "couple": "Lucas & Letícia",
+    "date": "26 | 07 | 2026",
+    "creditLine": "Rio de Janeiro, RJ · © 2026 Todos os direitos reservados",
     "madeBy": {
       "prefix": "Made by",
       "name": "Lucas Carrarini",
