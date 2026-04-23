@@ -1,0 +1,68 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: wedding-src/package-lock.json
+
+      - name: Install dependencies
+        working-directory: wedding-src
+        run: npm ci
+
+      - name: Build Astro site
+        working-directory: wedding-src
+        run: npm run build
+
+      - name: Assemble Pages artifact
+        run: |
+          mkdir -p artifact
+          # Arquivos estáticos da raiz do domínio
+          cp index.html artifact/
+          cp CNAME artifact/ 2>/dev/null || true
+          cp .nojekyll artifact/ 2>/dev/null || true
+          # Subprojeto estático existente
+          if [ -d "cha-de-panela" ]; then
+            cp -r cha-de-panela artifact/
+          fi
+          # Build do Astro publicado em /wedding/
+          mkdir -p artifact/wedding
+          cp -r wedding-src/dist/. artifact/wedding/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: artifact
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
