@@ -50,35 +50,21 @@ export default function Countdown({ targetISO, title, labels }: Props) {
         </div>
 
         <div className="mx-auto mt-10 max-w-3xl">
-          <div className="flex items-end justify-center gap-1.5 sm:gap-5">
-            <div className="text-center">
-              <div className="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-7xl">{pad2(parts.days)}</div>
-              <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-600">{labels.days}</div>
-            </div>
-            <div className="text-center" aria-hidden="true">
-              <div className="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-7xl">-</div>
-              <div className="mt-2 select-none text-[11px] opacity-0">.</div>
-            </div>
-            <div className="text-center">
-              <div className="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-7xl">{pad2(parts.hours)}</div>
-              <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-600">{labels.hours}</div>
-            </div>
-            <div className="text-center" aria-hidden="true">
-              <div className="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-7xl">:</div>
-              <div className="mt-2 select-none text-[11px] opacity-0">.</div>
-            </div>
-            <div className="text-center">
-              <div className="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-7xl">{pad2(parts.minutes)}</div>
-              <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-600">{labels.minutes}</div>
-            </div>
-            <div className="text-center" aria-hidden="true">
-              <div className="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-7xl">:</div>
-              <div className="mt-2 select-none text-[11px] opacity-0">.</div>
-            </div>
-            <div className="text-center">
-              <div className="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-7xl">{pad2(parts.seconds)}</div>
-              <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-600">{labels.seconds}</div>
-            </div>
+          <div className="flex items-stretch justify-center gap-2 sm:gap-4">
+            {[
+              { value: pad2(parts.days), label: labels.days },
+              { value: pad2(parts.hours), label: labels.hours },
+              { value: pad2(parts.minutes), label: labels.minutes },
+              { value: pad2(parts.seconds), label: labels.seconds },
+            ].map((unit) => (
+              <div
+                key={unit.label}
+                className="flex min-w-[68px] flex-col items-center justify-center rounded-2xl bg-paper px-3 py-4 shadow-soft sm:min-w-[110px] sm:rounded-3xl sm:px-6 sm:py-6"
+              >
+                <div className="font-serif text-4xl font-bold leading-none text-brand-500 sm:text-6xl">{unit.value}</div>
+                <div className="mt-2 text-[10px] font-medium uppercase tracking-[0.18em] text-neutral-600 sm:mt-3 sm:text-xs">{unit.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
