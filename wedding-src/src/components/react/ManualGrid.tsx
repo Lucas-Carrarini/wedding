@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+const AUTO_PLAY_INTERVAL_MS = 3000;
 
 type Item = {
   id: string;
@@ -45,10 +47,32 @@ function renderPanel(it: Item) {
 export default function ManualGrid({ items }: Props) {
   const [openItem, setOpenItem] = useState<Item | null>(null);
   const [closingItem, setClosingItem] = useState<Item | null>(null);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [autoIndex, setAutoIndex] = useState(0);
+  const openItemRef = useRef<Item | null>(null);
+  openItemRef.current = openItem;
+
   const rows = chunk(items, COLS);
-  const hasAnyOpen = openItem !== null;
+
+  useEffect(() => {
+    if (!autoPlay || items.length === 0) return;
+    const id = window.setInterval(() => {
+      setAutoIndex((i) => (i + 1) % items.length);
+    }, AUTO_PLAY_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, [autoPlay, items.length]);
+
+  useEffect(() => {
+    if (!autoPlay || items.length === 0) return;
+    const next = items[autoIndex];
+    const curr = openItemRef.current;
+    if (curr?.id === next.id) return;
+    if (curr) setClosingItem(curr);
+    setOpenItem(next);
+  }, [autoIndex, autoPlay, items]);
 
   const onItemClick = (it: Item) => {
+    if (autoPlay) setAutoPlay(false);
     if (openItem?.id === it.id) {
       setClosingItem(it);
       setOpenItem(null);
@@ -68,10 +92,8 @@ export default function ManualGrid({ items }: Props) {
         return (
           <div key={`row-${rowIdx}`}>
             <div className="grid grid-cols-3 gap-0">
-              {row.map((it, colIdx) => {
+              {row.map((it) => {
                 const isOpen = openItem?.id === it.id;
-                const isFirst = rowIdx === 0 && colIdx === 0;
-                const shouldPulse = !hasAnyOpen && isFirst;
                 return (
                   <button
                     key={it.id}
@@ -80,8 +102,8 @@ export default function ManualGrid({ items }: Props) {
                     aria-label={it.title}
                     aria-expanded={isOpen}
                     className={`relative z-0 aspect-square overflow-hidden bg-paper shadow-soft transition active:scale-[0.98] ${
-                      shouldPulse ? 'll-manual-pulse' : ''
-                    } ${isOpen ? 'z-10 ring-2 ring-inset ring-gold' : ''}`}
+                      isOpen ? 'z-10 ring-2 ring-inset ring-gold' : ''
+                    }`}
                   >
                     <img
                       src={it.iconUrl}
@@ -120,15 +142,6 @@ export default function ManualGrid({ items }: Props) {
       })}
 
       <style>{`
-        @keyframes ll-manual-pulse-kf {
-          0%   { box-shadow: inset 0 0 0 2px rgba(219, 192, 81, 0.7); }
-          70%  { box-shadow: inset 0 0 0 14px rgba(219, 192, 81, 0); }
-          100% { box-shadow: inset 0 0 0 14px rgba(219, 192, 81, 0); }
-        }
-        .ll-manual-pulse {
-          animation: ll-manual-pulse-kf 1.8s ease-out infinite;
-        }
-
         @keyframes ll-manual-panel-open-kf {
           from { grid-template-rows: 0fr; opacity: 0; }
           to { grid-template-rows: 1fr; opacity: 1; }
