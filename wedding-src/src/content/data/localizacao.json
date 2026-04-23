@@ -16,6 +16,8 @@
   "labels": {
     "arrivalLabel": "Chegue às",
     "addressLabel": "Endereço",
+    "parkingLabel": "Tem estacionamento no local",
+    "gateLabel": "Portão 1",
     "addToCalendar": "Adicionar à Agenda",
     "openInMaps": "Abrir no mapa"
   }
