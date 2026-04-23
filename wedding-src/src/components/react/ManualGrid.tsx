@@ -81,7 +81,7 @@ export default function ManualGrid({ items }: Props) {
                     aria-expanded={isOpen}
                     className={`relative z-0 aspect-square overflow-hidden bg-paper shadow-soft transition active:scale-[0.98] ${
                       shouldPulse ? 'll-manual-pulse' : ''
-                    } ${isOpen ? 'z-10 ring-2 ring-inset ring-brand-500' : ''}`}
+                    } ${isOpen ? 'z-10 ring-2 ring-inset ring-gold' : ''}`}
                   >
                     <img
                       src={it.iconUrl}
