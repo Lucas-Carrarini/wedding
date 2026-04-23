@@ -2,12 +2,7 @@
   "brand": "L&L",
   "items": [
     { "label": "Home", "href": "/" },
-    { "label": "Nossa história", "href": "/#historia" },
-    { "label": "Como chegar", "href": "/#localizacao" },
-    { "label": "Manual do convidado", "href": "/#manual" },
-    { "label": "Cronograma", "href": "/#cronograma" },
-    { "label": "RSVP", "href": "/rsvp" },
-    { "label": "Lista de presentes", "href": "/presentes" },
-    { "label": "Deixe um recado", "href": "/#recados" }
+    { "label": "Confirme sua presença", "href": "/rsvp" },
+    { "label": "Lista de presentes", "href": "/presentes" }
   ]
 }
