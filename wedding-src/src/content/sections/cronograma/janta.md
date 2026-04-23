@@ -1,3 +1,1 @@
-## Janta
-
-Depois do sim, senta com a gente. A mesa é pra conversar, brindar e comer sem pressa.
+Início da festa com entradinhas para receber todo mundo. Vem chegando e se sentindo em casa!

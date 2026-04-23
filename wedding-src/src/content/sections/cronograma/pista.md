@@ -1,3 +1,1 @@
-## Pista
-
-Hora de dançar. A gente abre a pista e conta com você pra não deixar ela esfriar.
+Janta e fotos protocolares com família e padrinhos. Momento especial para registrar eternamente.

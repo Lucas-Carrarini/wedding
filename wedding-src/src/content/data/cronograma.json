@@ -3,7 +3,8 @@
   "subtitle": "O ritmo do nosso grande dia",
   "items": [
     { "id": "cerimonia", "time": "16h", "label": "Cerimônia" },
-    { "id": "janta", "time": "17h", "label": "Janta" },
-    { "id": "pista", "time": "18h", "label": "Abertura da pista" }
+    { "id": "janta", "time": "17h", "label": "Início da festa" },
+    { "id": "pista", "time": "18h", "label": "Janta e fotos" },
+    { "id": "abertura-pista", "time": "19h", "label": "Abertura da pista" }
   ]
 }
