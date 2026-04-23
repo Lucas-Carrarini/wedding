@@ -1,3 +1,3 @@
-## Confirme sua presença
+## Sua presença é muito importante
 
-**A gente precisa saber que você vem.** Na página de confirmação você coloca seu nome e o de quem mora com você. É rapidinho e ajuda muito na organização.
+**Escolhemos cada convidado a dedo, com muito carinho.** Se puder, confirma o quanto antes — pelo site ou nos mandando uma mensagem. Se mora com outras pessoas que também receberam o convite, confirme cada uma delas, uma por vez.

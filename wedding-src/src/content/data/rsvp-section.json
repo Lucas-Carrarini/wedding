@@ -1,10 +1,10 @@
 {
-  "title": "Confirme sua presença",
+  "title": "Sua presença é muito importante",
   "nameLabel": "Nome completo",
   "namePlaceholder": "Digite seu nome como no convite",
   "submitLabel": "Confirmar presença",
   "sendingLabel": "Confirmando…",
-  "householdNotice": "Se vier acompanhado(a), confirme também os demais membros da sua casa, uma pessoa por vez.",
+  "householdNotice": "Se mora com outras pessoas que também receberam o convite, confirme cada uma delas aqui, uma por vez.",
   "successTitle": "Presença confirmada!",
   "successMessage": "A gente mal pode esperar pra te ver lá. Até 26/07/2026 ♥",
   "successCloseLabel": "Fechar"
