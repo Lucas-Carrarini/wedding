@@ -130,7 +130,7 @@ export default function ManualGrid({ items }: Props) {
                     aria-label={it.title}
                     aria-expanded={isOpen}
                     className={`relative z-0 aspect-square overflow-hidden bg-paper shadow-soft transition active:scale-[0.98] ${
-                      isOpen ? 'z-10 ring-2 ring-inset ring-gold' : ''
+                      isOpen ? 'z-10 ring-2 ring-inset ring-[#f0b7d1]' : ''
                     }`}
                   >
                     <img
