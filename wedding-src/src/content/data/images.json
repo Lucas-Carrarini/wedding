@@ -15,15 +15,15 @@
     "pre-09": { "real": "/images/prewedding/foto-09.png", "mockSize": "900x900?text=Foto+9", "alt": "" }
   },
   "manual": {
-    "confirmar-presenca":  { "real": "/images/manual/confirmar-presenca.png",  "mockSize": "256x256/png" },
-    "escolha-presente":    { "real": "/images/manual/escolha-presente.png",    "mockSize": "256x256/png" },
-    "dress-code":          { "real": "/images/manual/dress-code.png",          "mockSize": "256x256/png" },
-    "cores-que-nao-podem": { "real": "/images/manual/cores-que-nao-podem.png", "mockSize": "256x256/png" },
-    "silencioso":          { "real": "/images/manual/silencioso.png",          "mockSize": "256x256/png" },
-    "mesa-de-doces":       { "real": "/images/manual/mesa-de-doces.png",       "mockSize": "256x256/png" },
-    "aproveite":           { "real": "/images/manual/aproveite.png",           "mockSize": "256x256/png" },
-    "nao-leve-decoracao":  { "real": "/images/manual/nao-leve-decoracao.png",  "mockSize": "256x256/png" },
-    "de-um-abraco":        { "real": "/images/manual/de-um-abraco.png",        "mockSize": "256x256/png" }
+    "confirmar-presenca":  { "real": "/images/manual/confirmar-presenca.svg",  "mockSize": "256x256/svg" },
+    "escolha-presente":    { "real": "/images/manual/escolha-presente.svg",    "mockSize": "256x256/svg" },
+    "dress-code":          { "real": "/images/manual/dress-code.svg",          "mockSize": "256x256/svg" },
+    "cores-que-nao-podem": { "real": "/images/manual/cores-que-nao-podem.svg", "mockSize": "256x256/svg" },
+    "silencioso":          { "real": "/images/manual/silencioso.svg",          "mockSize": "256x256/svg" },
+    "mesa-de-doces":       { "real": "/images/manual/mesa-de-doces.svg",       "mockSize": "256x256/svg" },
+    "aproveite":           { "real": "/images/manual/aproveite.svg",           "mockSize": "256x256/svg" },
+    "nao-leve-decoracao":  { "real": "/images/manual/nao-leve-decoracao.svg",  "mockSize": "256x256/svg" },
+    "de-um-abraco":        { "real": "/images/manual/de-um-abraco.svg",        "mockSize": "256x256/svg" }
   },
   "presentes": {
     "geladeira":       { "real": "/images/presentes/geladeira.jpg",       "mockSize": "900x900?text=Geladeira" },
