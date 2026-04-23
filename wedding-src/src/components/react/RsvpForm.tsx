@@ -73,7 +73,10 @@ export default function RsvpForm(props: Props) {
           />
         </div>
 
-        <p className="text-sm text-neutral-600">{householdNotice}</p>
+        <p
+          className="text-sm text-neutral-600 [&_strong]:font-semibold [&_strong]:text-graphite"
+          dangerouslySetInnerHTML={{ __html: householdNotice }}
+        />
 
         <button
           type="submit"
