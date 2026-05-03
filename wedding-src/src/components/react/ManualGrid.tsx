@@ -133,7 +133,7 @@ export default function ManualGrid({ items }: Props) {
                       isOpen ? 'z-10 ring-2 ring-inset ring-[#BFC893]' : ''
                     }`}
                   >
-                    <span className="absolute inset-0 flex items-center justify-center p-6">
+                    <span className="absolute inset-0 flex items-center justify-center p-1">
                       <img src={it.iconUrl} alt={it.title} className="h-full w-full object-contain" />
                     </span>
                   </button>

@@ -15,13 +15,21 @@
     "pre-09": { "real": "/images/prewedding/foto-9.png",  "mockSize": "900x900?text=Foto+9",  "alt": "" },
     "pre-10": { "real": "/images/prewedding/foto-10.png", "mockSize": "900x900?text=Foto+10", "alt": "" },
     "pre-11": { "real": "/images/prewedding/foto-11.png", "mockSize": "900x900?text=Foto+11", "alt": "" },
-    "pre-12": { "real": "/images/prewedding/foto-12.png", "mockSize": "900x900?text=Foto+12", "alt": "" }
+    "pre-12": { "real": "/images/prewedding/foto-12.png", "mockSize": "900x900?text=Foto+12", "alt": "" },
+    "pre-13": { "real": "/images/prewedding/foto-13.png", "mockSize": "900x900?text=Foto+13", "alt": "" },
+    "pre-14": { "real": "/images/prewedding/foto-14.png", "mockSize": "900x900?text=Foto+14", "alt": "" },
+    "pre-15": { "real": "/images/prewedding/foto-15.png", "mockSize": "900x900?text=Foto+15", "alt": "" },
+    "pre-16": { "real": "/images/prewedding/foto-16.png", "mockSize": "900x900?text=Foto+16", "alt": "" },
+    "pre-17": { "real": "/images/prewedding/foto-17.png", "mockSize": "900x900?text=Foto+17", "alt": "" },
+    "pre-18": { "real": "/images/prewedding/foto-18.png", "mockSize": "900x900?text=Foto+18", "alt": "" },
+    "pre-19": { "real": "/images/prewedding/foto-19.png", "mockSize": "900x900?text=Foto+19", "alt": "" },
+    "pre-20": { "real": "/images/prewedding/foto-20.png", "mockSize": "900x900?text=Foto+20", "alt": "" }
   },
   "manual": {
-    "confirmar-presenca":  { "real": "/images/manual/confirmar-presenca.svg",  "mockSize": "256x256/svg" },
-    "escolha-presente":    { "real": "/images/manual/escolha-presente.svg",    "mockSize": "256x256/svg" },
-    "dress-code":          { "real": "/images/manual/dress-code.svg",          "mockSize": "256x256/svg" },
-    "silencioso":          { "real": "/images/manual/silencioso.svg",          "mockSize": "256x256/svg" }
+    "confirmar-presenca":  { "real": "/images/manual/confirmar-presenca.png",  "mockSize": "256x256/png" },
+    "escolha-presente":    { "real": "/images/manual/escolha-presente.png",    "mockSize": "256x256/png" },
+    "dress-code":          { "real": "/images/manual/dress-code.png",          "mockSize": "256x256/png" },
+    "silencioso":          { "real": "/images/manual/silencioso.png",          "mockSize": "256x256/png" }
   },
   "localizacao": {
     "vale": { "real": "/images/localizacao/vale-dos-sonhos.png", "mockSize": "1920x1080?text=Vale+dos+Sonhos" }

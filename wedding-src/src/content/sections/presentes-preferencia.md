@@ -1,4 +1,4 @@
-Para aqueles que desejam e podem contribuir com o início da construção do nosso lar, deixamos aqui algumas opções. Nossa preferência é pelo PIX, pois ele nos dá a flexibilidade e a tranquilidade necessárias escolher o que precisamos no momento certo.
+Para aqueles que desejam e podem contribuir com o início da construção do nosso lar, deixamos aqui algumas opções. Nossa preferência é pelo PIX, pois ele nos dá a flexibilidade e a tranquilidade necessárias para escolher o que precisamos no momento certo.
 
 &nbsp;
 
