@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 type Props = {
   title: string;
-  subtitle: string;
+  subtitleHtml: string;
   nameLabel: string;
   namePlaceholder: string;
   messageLabel: string;
@@ -18,7 +18,7 @@ type Props = {
 export default function MessageBoardForm(props: Props) {
   const {
     title,
-    subtitle,
+    subtitleHtml,
     nameLabel,
     namePlaceholder,
     messageLabel,
@@ -65,7 +65,10 @@ export default function MessageBoardForm(props: Props) {
   return (
     <div>
       <div className="font-serif text-2xl font-bold text-cloud sm:text-3xl">{title}</div>
-      <p className="mt-2 text-sm text-cloud/70">{subtitle}</p>
+      <div
+        className="mt-2 text-sm text-cloud/70 [&_p]:mb-0"
+        dangerouslySetInnerHTML={{ __html: subtitleHtml }}
+      />
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
         <div>

@@ -1,7 +1,6 @@
 {
   "messageBoard": {
     "title": "Deixe um recado",
-    "subtitle": "Um abraço, uma lembrança, um desejo. A gente vai guardar com carinho.",
     "nameLabel": "Nome",
     "namePlaceholder": "Seu nome",
     "messageLabel": "Recado",
@@ -14,7 +13,7 @@
     "requiredError": "Preencha nome e recado para enviar."
   },
   "credits": {
-    "couple": "Lucas & Letícia",
+    "couple": "Letícia & Lucas",
     "date": "26 | 07 | 2026",
     "creditLine": "Rio de Janeiro, RJ · © 2026 Todos os direitos reservados",
     "madeBy": {

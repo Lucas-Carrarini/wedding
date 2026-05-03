@@ -4,36 +4,27 @@
     "mobile":  { "real": "/images/hero/mobile.png",  "mockSize": "1080x1920" }
   },
   "prewedding": {
-    "pre-01": { "real": "/images/prewedding/foto-01.png", "mockSize": "900x900?text=Foto+1", "alt": "" },
-    "pre-02": { "real": "/images/prewedding/foto-02.png", "mockSize": "900x900?text=Foto+2", "alt": "" },
-    "pre-03": { "real": "/images/prewedding/foto-03.png", "mockSize": "900x900?text=Foto+3", "alt": "" },
-    "pre-04": { "real": "/images/prewedding/foto-04.png", "mockSize": "900x900?text=Foto+4", "alt": "" },
-    "pre-05": { "real": "/images/prewedding/foto-05.png", "mockSize": "900x900?text=Foto+5", "alt": "" },
-    "pre-06": { "real": "/images/prewedding/foto-06.png", "mockSize": "900x900?text=Foto+6", "alt": "" },
-    "pre-07": { "real": "/images/prewedding/foto-07.png", "mockSize": "900x900?text=Foto+7", "alt": "" },
-    "pre-08": { "real": "/images/prewedding/foto-08.png", "mockSize": "900x900?text=Foto+8", "alt": "" },
-    "pre-09": { "real": "/images/prewedding/foto-09.png", "mockSize": "900x900?text=Foto+9", "alt": "" }
+    "pre-01": { "real": "/images/prewedding/foto-1.png",  "mockSize": "900x900?text=Foto+1",  "alt": "" },
+    "pre-02": { "real": "/images/prewedding/foto-2.png",  "mockSize": "900x900?text=Foto+2",  "alt": "" },
+    "pre-03": { "real": "/images/prewedding/foto-3.png",  "mockSize": "900x900?text=Foto+3",  "alt": "" },
+    "pre-04": { "real": "/images/prewedding/foto-4.png",  "mockSize": "900x900?text=Foto+4",  "alt": "" },
+    "pre-05": { "real": "/images/prewedding/foto-5.png",  "mockSize": "900x900?text=Foto+5",  "alt": "" },
+    "pre-06": { "real": "/images/prewedding/foto-6.png",  "mockSize": "900x900?text=Foto+6",  "alt": "" },
+    "pre-07": { "real": "/images/prewedding/foto-7.png",  "mockSize": "900x900?text=Foto+7",  "alt": "" },
+    "pre-08": { "real": "/images/prewedding/foto-8.png",  "mockSize": "900x900?text=Foto+8",  "alt": "" },
+    "pre-09": { "real": "/images/prewedding/foto-9.png",  "mockSize": "900x900?text=Foto+9",  "alt": "" },
+    "pre-10": { "real": "/images/prewedding/foto-10.png", "mockSize": "900x900?text=Foto+10", "alt": "" },
+    "pre-11": { "real": "/images/prewedding/foto-11.png", "mockSize": "900x900?text=Foto+11", "alt": "" },
+    "pre-12": { "real": "/images/prewedding/foto-12.png", "mockSize": "900x900?text=Foto+12", "alt": "" }
   },
   "manual": {
     "confirmar-presenca":  { "real": "/images/manual/confirmar-presenca.svg",  "mockSize": "256x256/svg" },
     "escolha-presente":    { "real": "/images/manual/escolha-presente.svg",    "mockSize": "256x256/svg" },
     "dress-code":          { "real": "/images/manual/dress-code.svg",          "mockSize": "256x256/svg" },
-    "cores-que-nao-podem": { "real": "/images/manual/cores-que-nao-podem.svg", "mockSize": "256x256/svg" },
-    "silencioso":          { "real": "/images/manual/silencioso.svg",          "mockSize": "256x256/svg" },
-    "mesa-de-doces":       { "real": "/images/manual/mesa-de-doces.svg",       "mockSize": "256x256/svg" },
-    "aproveite":           { "real": "/images/manual/aproveite.svg",           "mockSize": "256x256/svg" },
-    "nao-leve-decoracao":  { "real": "/images/manual/nao-leve-decoracao.svg",  "mockSize": "256x256/svg" },
-    "de-um-abraco":        { "real": "/images/manual/de-um-abraco.svg",        "mockSize": "256x256/svg" }
-  },
-  "presentes": {
-    "geladeira":       { "real": "/images/presentes/geladeira.jpg",       "mockSize": "900x900?text=Geladeira" },
-    "forno-eletrico":  { "real": "/images/presentes/forno-eletrico.jpg",  "mockSize": "900x900?text=Forno" },
-    "maquina-de-lavar":{ "real": "/images/presentes/maquina-de-lavar.jpg","mockSize": "900x900?text=Maquina" },
-    "cama-queen":      { "real": "/images/presentes/cama-queen.jpg",      "mockSize": "900x900?text=Cama" },
-    "armario":         { "real": "/images/presentes/armario.jpg",         "mockSize": "900x900?text=Armario" }
+    "silencioso":          { "real": "/images/manual/silencioso.svg",          "mockSize": "256x256/svg" }
   },
   "localizacao": {
-    "vale": { "real": "/images/localizacao/vale-dos-sonhos.jpg", "mockSize": "1920x1080?text=Vale+dos+Sonhos" }
+    "vale": { "real": "/images/localizacao/vale-dos-sonhos.png", "mockSize": "1920x1080?text=Vale+dos+Sonhos" }
   },
   "pix": {
     "qrcode": { "real": "/images/pix/qrcode.png", "mockSize": "800x800/png" }

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 type Gift = {
   nome: string;
   valor: number;
-  fotoUrl: string;
 };
 
 type Props = {
@@ -61,42 +60,49 @@ export default function GiftsModalButton({
           <div
             role="dialog"
             aria-modal="true"
-            className="relative z-10 flex max-h-[85vh] w-full max-w-2xl flex-col rounded-t-3xl bg-paper shadow-soft sm:rounded-3xl"
+            className="relative z-10 flex max-h-[90vh] w-full max-w-lg flex-col overflow-y-auto rounded-t-3xl bg-paper shadow-soft sm:rounded-3xl"
           >
-            <div className="flex items-center justify-between border-b border-neutral-100 px-6 py-4">
+            <div className="relative flex items-center justify-center border-b border-neutral-100 px-6 py-4">
               <div className="font-serif text-xl font-bold text-graphite">{modalTitle}</div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-neutral-100 px-4 py-2 text-sm font-semibold text-graphite transition hover:bg-neutral-200"
+                aria-label={closeLabel}
+                className="absolute right-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-graphite transition hover:bg-neutral-200"
               >
-                {closeLabel}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-6 py-4">
+            <div className="flex-1 px-6 py-4">
               <ul className="grid gap-4">
                 {gifts.map((g, i) => (
                   <li
                     key={`${g.nome}-${i}`}
-                    className="flex gap-4 rounded-2xl border border-neutral-100 p-3"
+                    className="flex items-center justify-center gap-3 rounded-2xl border border-neutral-100 px-4 py-3 text-center"
                   >
-                    <div
-                      className="shrink-0 overflow-hidden rounded-xl bg-neutral-100"
-                      style={{ width: 96, height: 96 }}
-                    >
-                      <img src={g.fotoUrl} alt="" className="h-full w-full object-cover" loading="lazy" />
-                    </div>
-                    <div className="flex min-w-0 flex-1 flex-col justify-center">
-                      <div className="truncate font-semibold text-graphite">{g.nome}</div>
-                      <div className="mt-1 text-sm font-medium text-brand-600">{formatBRL(g.valor)}</div>
-                    </div>
+                    <div className="min-w-0 break-words font-semibold text-graphite">{g.nome}:</div>
+                    <div className="shrink-0 whitespace-nowrap text-sm font-medium text-brand-600">Em torno de {formatBRL(g.valor)}</div>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="border-t border-neutral-100 px-6 py-4">
+            <div className="border-t border-neutral-100 px-6 py-4 text-center">
               <div className="text-sm text-neutral-700">{wantToGiftText}</div>
               <a
                 href={whatsappUrl}
