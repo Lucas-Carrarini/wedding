@@ -14,10 +14,10 @@ const title = `${presentesSection.title} - ${site.couple.names}`;
 
 const qrUrl = resolveImage(images.pix.qrcode);
 
-const giftsWithImages = presentes.map((g: { id: string; nome: string; valor: number }) => {
-  const entry = (images.presentes as Record<string, { real: string; mockSize: string }>)[g.id];
-  return { nome: g.nome, valor: g.valor, fotoUrl: entry ? resolveImage(entry) : '' };
-});
+const giftsList = presentes.map((g: { id: string; nome: string; valor: number }) => ({
+  nome: g.nome,
+  valor: g.valor,
+}));
 ---
 
 <BaseLayout title={title}>
@@ -48,7 +48,7 @@ const giftsWithImages = presentes.map((g: { id: string; nome: string; valor: num
             <div class="prose prose-neutral max-w-none">
               <PresentesPreferencia />
             </div>
-            <div>
+            <div class="flex justify-center">
               <GiftsModalButton
                 client:load
                 openLabel={presentesSection.seeListButton}
@@ -57,7 +57,7 @@ const giftsWithImages = presentes.map((g: { id: string; nome: string; valor: num
                 wantToGiftText={presentesSection.wantToGiftText}
                 whatsappLabel={presentesSection.whatsappButton}
                 whatsappUrl={presentesSection.whatsappUrl}
-                gifts={giftsWithImages}
+                gifts={giftsList}
               />
             </div>
           </div>
@@ -77,7 +77,7 @@ const giftsWithImages = presentes.map((g: { id: string; nome: string; valor: num
               <CopyPixButton
                 client:load
                 payload={presentesSection.pixPayload}
-                label={presentesSection.copyLabel}
+                cpf={presentesSection.pixCpf}
                 copiedLabel={presentesSection.copiedLabel}
               />
             </div>

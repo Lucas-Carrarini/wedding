@@ -1,1 +1,1 @@
-Antes de qualquer coisa, obrigado. Cada pessoa que vai estar com a gente no dia 26 já é presente. O que vem a seguir é pra quem quiser contribuir com a nossa nova casa. Tudo que chegar vai ser recebido com muito carinho.
+Antes de qualquer coisa, o nosso coração transborda de gratidão. Só Jeová sabe o quão especial tem sido essa jornada e como Ele tem usado as pessoas que amamos para nos fortalecer. Ter cada um de vocês com a gente no nosso casamento já é o nosso maior presente e a prova mais linda de carinho que poderíamos receber.

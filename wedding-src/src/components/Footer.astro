@@ -1,6 +1,9 @@
 ---
 import footer from '../content/data/footer.json';
 import MessageBoardForm from './react/MessageBoardForm';
+import { compiledContent as compiledSubtitle } from '../content/sections/footer-subtitle.md';
+
+const subtitleHtml = await compiledSubtitle();
 ---
 
 <footer id="recados" class="bg-graphite text-cloud scroll-mt-24">
@@ -9,7 +12,7 @@ import MessageBoardForm from './react/MessageBoardForm';
       <MessageBoardForm
         client:load
         title={footer.messageBoard.title}
-        subtitle={footer.messageBoard.subtitle}
+        subtitleHtml={subtitleHtml}
         nameLabel={footer.messageBoard.nameLabel}
         namePlaceholder={footer.messageBoard.namePlaceholder}
         messageLabel={footer.messageBoard.messageLabel}

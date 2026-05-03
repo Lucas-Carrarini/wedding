@@ -1,6 +1,8 @@
 {
   "title": "Cronograma",
+  "hidden": true,
   "subtitle": "O ritmo do nosso grande dia",
+  "hiddenSubtitle": "Em breve",
   "items": [
     { "id": "cerimonia", "time": "16h", "label": "Cerimônia" },
     { "id": "janta", "time": "17h", "label": "Início da festa" },

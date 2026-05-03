@@ -1,5 +1,20 @@
-Através dos anos, fomos descobrindo que o nosso relacionamento é a **nossa maior certeza**! É claro que não foi NADA fácil chegar até aqui, tivemos inúmeros desafios na nossa trajetória. Mas foram essas lutas que nos deram a certeza absoluta de que, **quando estamos juntos, conseguimos passar por qualquer fase**. No fundo, é sobre encontrar a pessoa certa para fazer *"duplinha"* na vida! *(Eclesiastes 4:9-12)*
+Através dos anos, fomos descobrindo que o **nosso relacionamento é a nossa maior certeza!** 
 
-Como sempre dizemos, formamos a melhor equipe, porque antes de tudo somos **melhores amigos**. E essa amizade é a base de absolutamente tudo o que construímos. Nós nos apoiamos nas escolhas diárias, torcemos um pelo outro e encontramos a força que precisamos para continuar sempre que olhamos para o lado. Entendemos que o amor se prova na rotina, na paciência e na vontade de caminhar na mesma direção. Esse nosso amor é a parte mais bonita do que somos. É um sentimento que cresceu na nossa sintonia, que nos abraça todos os dias e que se tornou o nosso **maior refúgio**, sendo a principal razão pela qual queremos dividir todos os nossos amanhãs.
+É claro que não foi nada fácil chegar até aqui, tivemos inúmeros desafios na nossa trajetória. 
 
-Agora, o nosso maior sonho é **criar o nosso lar e encher nossa casa com muito amor e alegria**! Sabemos que não é uma etapa fácil, mas não temos a menor dúvida de que iremos conseguir. E como nenhum sonho é completo sem as pessoas que amamos… queremos agradecer a você. Se você chegou até aqui, é porque faz parte da nossa história e nos ajudou a estar exatamente onde estamos. **Muito obrigado!**
+**Mas foram essas lutas que nos deram a certeza absoluta de que, quando estamos juntos, conseguimos passar por qualquer fase.** 
+
+No fundo, é sobre encontrar a pessoa certa para fazer 'duplinha' na vida! **(Eclesiastes 4:9-12)**
+
+&nbsp;
+
+Como sempre dizemos, **formamos a melhor equipe**, porque antes de tudo somos melhores amigos.
+E essa amizade é a base de absolutamente tudo o que construímos. Nós nos apoiamos nas escolhas diárias, torcemos um pelo outro e encontramos a força que precisamos para continuar sempre que olhamos para o lado. 
+
+&nbsp;
+
+Entendemos que o amor se prova na rotina, na paciência e na vontade de caminhar na mesma direção. **Esse nosso amor é a parte mais bonita do que somos.** É um sentimento que cresceu na nossa sintonia, que nos abraça todos os dias e que se tornou o nosso maior refúgio, sendo a principal razão pela qual queremos dividir todos os nossos amanhãs.
+
+&nbsp;
+
+Agora, o nosso maior sonho é **criar o nosso lar** e encher nossa casa com muito amor e alegria! Sabemos que não é uma etapa fácil, mas não temos a menor dúvida de que iremos conseguir. E como nenhum sonho é completo sem as pessoas que amamos... queremos agradecer a você. **Se você chegou até aqui, é porque faz parte da nossa história e nos ajudou a estar exatamente onde estamos. Muito obrigado!**

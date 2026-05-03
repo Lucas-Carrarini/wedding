@@ -1,7 +1,6 @@
 {
   "messageBoard": {
     "title": "Deixe um recado",
-    "subtitle": "Um abraço, uma lembrança, um desejo. A gente vai guardar com carinho.",
     "nameLabel": "Nome",
     "namePlaceholder": "Seu nome",
     "messageLabel": "Recado",

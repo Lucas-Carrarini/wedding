@@ -12,10 +12,5 @@
     "redirectLabel": "Ver lista de presentes"
   },
   { "id": "dress-code", "title": "Dress code" },
-  { "id": "cores-que-nao-podem", "title": "Cores que não podem" },
-  { "id": "silencioso", "title": "Silencioso" },
-  { "id": "mesa-de-doces", "title": "Mesa de doces" },
-  { "id": "aproveite", "title": "Aproveite" },
-  { "id": "nao-leve-decoracao", "title": "Não leve decoração" },
-  { "id": "de-um-abraco", "title": "Dê um abraço" }
+  { "id": "silencioso", "title": "Silencioso" }
 ]

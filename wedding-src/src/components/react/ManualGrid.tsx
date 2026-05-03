@@ -17,7 +17,7 @@ type Props = {
   items: Item[];
 };
 
-const COLS = 3;
+const COLS = 2;
 
 function chunk<T>(arr: T[], size: number): T[][] {
   const out: T[][] = [];
@@ -119,7 +119,7 @@ export default function ManualGrid({ items }: Props) {
       {rows.map((row, rowIdx) => {
         return (
           <div key={`row-${rowIdx}`}>
-            <div className="grid grid-cols-3 gap-0">
+            <div className="grid grid-cols-2 gap-0">
               {row.map((it) => {
                 const isOpen = openItem?.id === it.id;
                 return (
@@ -130,14 +130,12 @@ export default function ManualGrid({ items }: Props) {
                     aria-label={it.title}
                     aria-expanded={isOpen}
                     className={`relative z-0 aspect-square overflow-hidden bg-paper shadow-soft transition active:scale-[0.98] ${
-                      isOpen ? 'z-10 ring-2 ring-inset ring-[#f0b7d1]' : ''
+                      isOpen ? 'z-10 ring-2 ring-inset ring-[#BFC893]' : ''
                     }`}
                   >
-                    <img
-                      src={it.iconUrl}
-                      alt=""
-                      className="absolute inset-0 h-full w-full object-contain p-3 sm:p-4"
-                    />
+                    <span className="absolute inset-0 flex items-center justify-center p-6">
+                      <img src={it.iconUrl} alt={it.title} className="h-full w-full object-contain" />
+                    </span>
                   </button>
                 );
               })}

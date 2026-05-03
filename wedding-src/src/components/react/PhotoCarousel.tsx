@@ -11,22 +11,41 @@ type Props = {
   images: Item[];
 };
 
+// Quantos slides clonados em cada extremidade.
+// Deve ser maior que o número máximo de slides visíveis para que o "snap"
+// do loop infinito aconteça bem fora da viewport (imperceptível).
+const BUFFER = 6;
+
 export default function PhotoCarousel({ autoplayMs, images }: Props) {
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const [index, setIndex] = useState(1);
   const [animate, setAnimate] = useState(true);
 
   const safeImages = useMemo(() => images.filter(Boolean), [images]);
   const count = safeImages.length;
 
-  const loopImages = useMemo(() => {
-    if (count === 0) return [];
-    if (count === 1) return [safeImages[0]];
+  // Constrói o array com BUFFER clones em cada lado. Se houver poucas imagens
+  // (ex.: 1, 2, 3), repete o conjunto até preencher os clones.
+  const { loopImages, startIndex } = useMemo(() => {
+    if (count === 0) return { loopImages: [] as Item[], startIndex: 0 };
+    if (count === 1) {
+      const arr = Array.from({ length: BUFFER * 2 + 1 }, () => safeImages[0]);
+      return { loopImages: arr, startIndex: BUFFER };
+    }
 
-    const first = safeImages[0];
-    const last = safeImages[count - 1];
-    return [last, ...safeImages, first];
+    const reps = Math.max(1, Math.ceil(BUFFER / count));
+    const repeated: Item[] = [];
+    for (let i = 0; i < reps; i++) repeated.push(...safeImages);
+
+    const prepend = repeated.slice(repeated.length - BUFFER);
+    const append = repeated.slice(0, BUFFER);
+    return { loopImages: [...prepend, ...safeImages, ...append], startIndex: BUFFER };
   }, [count, safeImages]);
+
+  const [index, setIndex] = useState(startIndex);
+
+  useEffect(() => {
+    setIndex(startIndex);
+  }, [startIndex]);
 
   useEffect(() => {
     if (count <= 1) return;
@@ -83,18 +102,20 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
     if (!track) return;
 
     const handle = () => {
-      if (index === 0) {
+      // Saiu pela esquerda dos clones — pula para o equivalente real.
+      if (index < BUFFER) {
         setAnimate(false);
-        setIndex(count);
+        setIndex(index + count);
         requestAnimationFrame(() => {
           requestAnimationFrame(() => setAnimate(true));
         });
         return;
       }
 
-      if (index === count + 1) {
+      // Avançou para a região de clones à direita — volta para a posição real correspondente.
+      if (index >= BUFFER + count) {
         setAnimate(false);
-        setIndex(1);
+        setIndex(index - count);
         requestAnimationFrame(() => {
           requestAnimationFrame(() => setAnimate(true));
         });

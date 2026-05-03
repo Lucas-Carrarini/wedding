@@ -1,3 +1,7 @@
-## Silencioso
+## Viva a emoção do momento!
 
-**Na cerimônia, deixa o celular no silencioso.** Pode curtir, só não deixa um toque estragar o momento. As fotos oficiais a gente compartilha depois.
+Na cerimônia, lembre-se de guardar o celular e deixar no silencioso. Aproveite o momento sem as telas, para viver essa emoção inteiramente com a gente e deixe os cliques por conta da nossa equipe de fotografia. 
+
+&nbsp;
+
+**As fotos oficiais compartilhamos com vocês depois!**
