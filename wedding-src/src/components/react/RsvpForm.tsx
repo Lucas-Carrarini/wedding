@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getSupabase } from '../../lib/supabase';
 
 type Props = {
   nameLabel: string;
@@ -9,6 +10,10 @@ type Props = {
   successTitle: string;
   successMessage: string;
   successCloseLabel: string;
+  notFoundTitle?: string;
+  notFoundMessage?: string;
+  errorTitle?: string;
+  errorMessage?: string;
 };
 
 export default function RsvpForm(props: Props) {
@@ -21,33 +26,60 @@ export default function RsvpForm(props: Props) {
     successTitle,
     successMessage,
     successCloseLabel,
+    notFoundTitle = 'Nome não encontrado',
+    notFoundMessage = 'Não localizamos seu nome na lista de convidados. Verifique a grafia ou entre em contato com os noivos.',
+    errorTitle = 'Algo deu errado',
+    errorMessage = 'Não foi possível registrar sua confirmação agora. Tente novamente em alguns instantes.',
   } = props;
 
+  type ResultKind = 'success' | 'not_found' | 'error' | null;
   const [name, setName] = useState('');
   const [sending, setSending] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [result, setResult] = useState<ResultKind>(null);
 
   const isValid = name.trim().length >= 2;
+  const showModal = result !== null;
 
   useEffect(() => {
-    if (!showSuccess) return;
+    if (!showModal) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = prev;
     };
-  }, [showSuccess]);
+  }, [showModal]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValid || sending) return;
     setSending(true);
-    // TODO: integrar com Supabase
-    await new Promise((r) => setTimeout(r, 500));
-    setSending(false);
-    setName('');
-    setShowSuccess(true);
+    try {
+      const supabase = getSupabase();
+      const { data, error } = await supabase.rpc('confirmar_presenca', {
+        nome_input: name.trim(),
+      });
+      if (error) {
+        console.error('[RSVP] erro RPC:', error);
+        setResult('error');
+      } else if (data === true) {
+        setName('');
+        setResult('success');
+      } else {
+        setResult('not_found');
+      }
+    } catch (err) {
+      console.error('[RSVP] exceção:', err);
+      setResult('error');
+    } finally {
+      setSending(false);
+    }
   };
+
+  const closeModal = () => setResult(null);
+  const modalTitle =
+    result === 'success' ? successTitle : result === 'not_found' ? notFoundTitle : errorTitle;
+  const modalMessage =
+    result === 'success' ? successMessage : result === 'not_found' ? notFoundMessage : errorMessage;
 
   const buttonBase =
     'inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold shadow-soft transition-all duration-300';
@@ -88,12 +120,12 @@ export default function RsvpForm(props: Props) {
         </button>
       </form>
 
-      {showSuccess ? (
+      {showModal ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
           <button
             type="button"
             aria-label={successCloseLabel}
-            onClick={() => setShowSuccess(false)}
+            onClick={closeModal}
             className="absolute inset-0 bg-black/50"
           />
           <div
@@ -101,11 +133,11 @@ export default function RsvpForm(props: Props) {
             aria-modal="true"
             className="relative z-10 w-full max-w-md rounded-3xl bg-paper p-8 text-center shadow-soft"
           >
-            <div className="font-serif text-2xl font-bold text-graphite">{successTitle}</div>
-            <p className="mt-3 text-sm text-neutral-600">{successMessage}</p>
+            <div className="font-serif text-2xl font-bold text-graphite">{modalTitle}</div>
+            <p className="mt-3 text-sm text-neutral-600">{modalMessage}</p>
             <button
               type="button"
-              onClick={() => setShowSuccess(false)}
+              onClick={closeModal}
               className="mt-6 inline-flex rounded-full bg-graphite px-5 py-3 text-sm font-semibold text-cloud shadow-soft transition hover:bg-graphite/90"
             >
               {successCloseLabel}

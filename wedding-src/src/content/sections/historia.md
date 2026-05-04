@@ -2,14 +2,14 @@ Através dos anos, fomos descobrindo que o **nosso relacionamento é a nossa mai
 
 É claro que não foi nada fácil chegar até aqui, tivemos inúmeros desafios na nossa trajetória. 
 
-**Mas foram essas lutas que nos deram a certeza absoluta de que, quando estamos juntos, conseguimos passar por qualquer fase.** 
+**Mas, foram essas lutas que nos deram a certeza absoluta de que, quando estamos juntos, conseguimos passar por qualquer fase.** 
 
 No fundo, é sobre encontrar a pessoa certa para fazer 'duplinha' na vida! **(Eclesiastes 4:9-12)**
 
 &nbsp;
 
 Como sempre dizemos, **formamos a melhor equipe**, porque antes de tudo somos melhores amigos.
-E essa amizade é a base de absolutamente tudo o que construímos. Nós nos apoiamos nas escolhas diárias, torcemos um pelo outro e encontramos a força que precisamos para continuar sempre que olhamos para o lado. 
+E, essa amizade é a base de absolutamente tudo o que construímos. Nós nos apoiamos nas escolhas diárias, torcemos um pelo outro e encontramos a força que precisamos para continuar sempre que olhamos para o lado. 
 
 &nbsp;
 

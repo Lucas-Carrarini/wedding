@@ -34,6 +34,9 @@ jobs:
 
       - name: Build Astro site
         working-directory: wedding-src
+        env:
+          PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
+          PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.PUBLIC_SUPABASE_ANON_KEY }}
         run: npm run build
 
       - name: Assemble Pages artifact
