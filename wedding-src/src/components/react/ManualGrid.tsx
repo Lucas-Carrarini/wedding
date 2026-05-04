@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
-const AUTO_PLAY_INTERVAL_MS = 3000;
-const AUTO_PLAY_RESTART_DELAY_MS = 10000;
+const AUTO_PLAY_INTERVAL_MS = 1500;
+const AUTO_PLAY_RESTART_DELAY_MS = 3000;
 const MAX_AUTO_PLAY_CYCLES = 3;
 
 type Item = {

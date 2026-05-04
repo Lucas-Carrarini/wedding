@@ -5,6 +5,7 @@ Queremos ver todos lindos e confortáveis no nosso grande dia! Para mantermos a 
 &nbsp;
 
 **Para as mulheres:** Vestidos longos sofisticados e fluidos.
+
 **Para os homens:** Terno, camisa social, sapato social e gravata!
 
 &nbsp;

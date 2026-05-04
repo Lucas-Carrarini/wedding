@@ -19,3 +19,8 @@ Thumbs.db
 .idea/
 
 .commit-msg.tmp
+
+# Variáveis de ambiente (Supabase, etc.)
+wedding-src/.env
+wedding-src/.env.local
+wedding-src/.env.*.local

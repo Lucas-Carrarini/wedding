@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getSupabase } from '../../lib/supabase';
 
 type Props = {
   title: string;
@@ -54,12 +55,26 @@ export default function MessageBoardForm(props: Props) {
     }
     setError(null);
     setSending(true);
-    // TODO: integrar com Supabase
-    await new Promise((r) => setTimeout(r, 500));
-    setSending(false);
-    setName('');
-    setMessage('');
-    setShowSuccess(true);
+    try {
+      const supabase = getSupabase();
+      const { error: rpcError } = await supabase.rpc('inserir_mensagem', {
+        nome_input: name.trim(),
+        mensagem_input: message.trim(),
+      });
+      if (rpcError) {
+        console.error('[Mural] erro RPC:', rpcError);
+        setError('Não foi possível enviar sua mensagem. Tente novamente.');
+        return;
+      }
+      setName('');
+      setMessage('');
+      setShowSuccess(true);
+    } catch (err) {
+      console.error('[Mural] exceção:', err);
+      setError('Não foi possível enviar sua mensagem. Tente novamente.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
