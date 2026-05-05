@@ -11,9 +11,10 @@ type Props = {
   images: Item[];
 };
 
-// Buffer grande de clones em cada lado para sensação de feed infinito
-// sem o usuário ver o "snap back" mesmo arrastando rápido várias vezes.
-const BUFFER = 20;
+// Quantidade de blocos embaralhados mantidos simultaneamente no DOM.
+// Cada bloco = uma cópia shuffled de todas as imagens. Ao chegar perto das bordas,
+// novos blocos embaralhados são gerados nas extremidades, mantendo o total constante.
+const BLOCK_COUNT = 15;
 // Tempo de inatividade após interação para retomar autoplay.
 const RESUME_AUTOPLAY_MS = 3000;
 // Velocidade mínima (px/ms) pra considerar "flick" e avançar um slide.
@@ -23,6 +24,15 @@ const DRAG_DISTANCE_RATIO = 0.2;
 // Duração da transição normal (animação entre slides).
 const TRANSITION_MS = 700;
 
+function shuffle<T>(arr: T[]): T[] {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function PhotoCarousel({ autoplayMs, images }: Props) {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [animate, setAnimate] = useState(true);
@@ -30,20 +40,27 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
   const safeImages = useMemo(() => images.filter(Boolean), [images]);
   const count = safeImages.length;
 
-  const { loopImages, startIndex } = useMemo(() => {
-    if (count === 0) return { loopImages: [] as Item[], startIndex: 0 };
-    if (count === 1) {
-      const arr = Array.from({ length: BUFFER * 2 + 1 }, () => safeImages[0]);
-      return { loopImages: arr, startIndex: BUFFER };
-    }
-    const reps = Math.max(1, Math.ceil(BUFFER / count));
-    const repeated: Item[] = [];
-    for (let i = 0; i < reps; i++) repeated.push(...safeImages);
-    const prepend = repeated.slice(repeated.length - BUFFER);
-    const append = repeated.slice(0, BUFFER);
-    return { loopImages: [...prepend, ...safeImages, ...append], startIndex: BUFFER };
-  }, [count, safeImages]);
+  // Blocos embaralhados; cada bloco é uma cópia shuffled das imagens.
+  // A ordem inicial é aleatória; conforme o usuário avança/volta, blocos novos
+  // (também embaralhados, cada um diferente) substituem os das extremidades.
+  const [blocks, setBlocks] = useState<Item[][]>(() => {
+    if (count === 0) return [];
+    return Array.from({ length: BLOCK_COUNT }, () => shuffle(safeImages));
+  });
 
+  useEffect(() => {
+    if (count === 0) {
+      setBlocks([]);
+      return;
+    }
+    setBlocks(Array.from({ length: BLOCK_COUNT }, () => shuffle(safeImages)));
+  }, [safeImages, count]);
+
+  const flat = useMemo(() => blocks.flat(), [blocks]);
+  const totalSlides = flat.length;
+
+  // Índice absoluto dentro do flat. Começa no meio para permitir arraste p/ ambos os lados.
+  const startIndex = Math.floor(BLOCK_COUNT / 2) * count;
   const [index, setIndex] = useState(startIndex);
 
   // Estado de arraste (refs para evitar re-render a cada move).
@@ -62,9 +79,11 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
   const [autoplayPaused, setAutoplayPaused] = useState(false);
   const resumeTimerRef = useRef<number | null>(null);
 
+  // Reseta index ao meio quando as imagens mudam (não a cada troca interna de blocos).
   useEffect(() => {
-    setIndex(startIndex);
-  }, [startIndex]);
+    setIndex(Math.floor(BLOCK_COUNT / 2) * count);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [safeImages]);
 
   // Recalcula step (largura de um slide + gap) sempre que layout mudar.
   const recomputeStep = useCallback(() => {
@@ -132,7 +151,10 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
     };
   }, [autoplayMs, count, autoplayPaused]);
 
-  // Snap de loop infinito: quando o transitionend termina em zona de clones, reposiciona sem animar.
+  // Loop infinito com blocos embaralhados: ao se aproximar das bordas,
+  // adiciona um novo bloco shuffled na extremidade oposta à direção e
+  // descarta o bloco da borda, mantendo o total constante. O índice é
+  // ajustado sem animação para preservar a posição visual.
   useEffect(() => {
     if (count <= 1) return;
     const track = trackRef.current;
@@ -140,17 +162,21 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
 
     const handle = () => {
       if (isDraggingRef.current) return;
-      if (index < BUFFER) {
+      // Perto da borda esquerda: adiciona bloco novo no início, descarta o último.
+      if (index < count) {
         setAnimate(false);
-        setIndex(index + count);
+        setBlocks((bs) => [shuffle(safeImages), ...bs.slice(0, bs.length - 1)]);
+        setIndex((i) => i + count);
         requestAnimationFrame(() => {
           requestAnimationFrame(() => setAnimate(true));
         });
         return;
       }
-      if (index >= BUFFER + count) {
+      // Perto da borda direita: adiciona bloco novo no final, descarta o primeiro.
+      if (index >= totalSlides - count) {
         setAnimate(false);
-        setIndex(index - count);
+        setBlocks((bs) => [...bs.slice(1), shuffle(safeImages)]);
+        setIndex((i) => i - count);
         requestAnimationFrame(() => {
           requestAnimationFrame(() => setAnimate(true));
         });
@@ -159,7 +185,7 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
 
     track.addEventListener('transitionend', handle);
     return () => track.removeEventListener('transitionend', handle);
-  }, [count, index]);
+  }, [count, index, totalSlides, safeImages]);
 
   // Agenda retomada do autoplay após inatividade.
   const scheduleResume = useCallback(() => {
@@ -228,12 +254,7 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
     lastXRef.current = e.clientX;
     lastTRef.current = now;
 
-    // Trava na primeira foto: se já está na primeira, resistência rubber-band ao arrastar pra direita.
-    let effectiveDx = dx;
-    if (index <= BUFFER && dx > 0) {
-      effectiveDx = dx * 0.25;
-    }
-    dragOffsetRef.current = effectiveDx;
+    dragOffsetRef.current = dx;
     applyTransform(false);
 
     // Evita scroll/selection enquanto arrasta horizontalmente.
@@ -277,7 +298,7 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
 
     dragOffsetRef.current = 0;
     if (slidesMoved !== 0) {
-      setIndex((prev) => Math.max(BUFFER, prev + slidesMoved));
+      setIndex((prev) => prev + slidesMoved);
     } else {
       // Volta ao slide atual com animação.
       applyTransform(true);
@@ -310,22 +331,26 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
             }}
             ref={trackRef}
           >
-            {loopImages.map((img, i) => (
-              <div
-                key={`${img.id}-${i}`}
-                data-slide="true"
-                className="shrink-0 rounded-2xl bg-neutral-100 shadow-soft overflow-hidden"
-                style={{ width: '70vw', maxWidth: 420, aspectRatio: '1 / 1' }}
-              >
-                <img
-                  src={img.url}
-                  alt={img.alt}
-                  className="h-full w-full object-cover pointer-events-none"
-                  draggable={false}
-                  loading={i < BUFFER + 5 ? 'eager' : 'lazy'}
-                />
-              </div>
-            ))}
+            {flat.map((img, i) => {
+              // Preload eager somente perto do index atual; o resto lazy.
+              const eager = Math.abs(i - index) <= count;
+              return (
+                <div
+                  key={`${img.id}-${i}`}
+                  data-slide="true"
+                  className="shrink-0 rounded-2xl bg-neutral-100 shadow-soft overflow-hidden"
+                  style={{ width: '70vw', maxWidth: 420, aspectRatio: '1 / 1' }}
+                >
+                  <img
+                    src={img.url}
+                    alt={img.alt}
+                    className="h-full w-full object-cover pointer-events-none"
+                    draggable={false}
+                    loading={eager ? 'eager' : 'lazy'}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
