@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const AUTO_PLAY_INTERVAL_MS = 1500;
+const AUTO_PLAY_INTERVAL_MS = 3000;
 const AUTO_PLAY_RESTART_DELAY_MS = 3000;
 const MAX_AUTO_PLAY_CYCLES = 3;
 
@@ -53,18 +53,37 @@ export default function ManualGrid({ items }: Props) {
   const [autoIndex, setAutoIndex] = useState(0);
   const [autoPlayCycles, setAutoPlayCycles] = useState(0);
   const [lastInteractionTime, setLastInteractionTime] = useState<number>(Date.now());
+  const [isVisible, setIsVisible] = useState(false);
   const openItemRef = useRef<Item | null>(null);
   openItemRef.current = openItem;
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const rows = chunk(items, COLS);
 
+  // Observa se o componente está dentro da viewport. Quando sai (ex.: usuário
+  // rolou pra digitar no mural/rodapé), congela o auto-play para não embaralhar
+  // a altura da página enquanto o usuário não está olhando.
   useEffect(() => {
-    if (!autoPlay || items.length === 0) return;
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return;
+    }
+    const obs = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.15 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!autoPlay || items.length === 0 || !isVisible) return;
     const id = window.setInterval(() => {
       setAutoIndex((i) => (i + 1) % items.length);
     }, AUTO_PLAY_INTERVAL_MS);
     return () => window.clearInterval(id);
-  }, [autoPlay, items.length]);
+  }, [autoPlay, items.length, isVisible]);
 
   // Timer para reiniciar auto-play após 10s sem interação
   useEffect(() => {
@@ -115,7 +134,7 @@ export default function ManualGrid({ items }: Props) {
   const onCloseAnimEnd = () => setClosingItem(null);
 
   return (
-    <div className="mx-auto max-w-md sm:max-w-lg">
+    <div className="mx-auto max-w-md sm:max-w-lg" ref={containerRef}>
       {rows.map((row, rowIdx) => {
         return (
           <div key={`row-${rowIdx}`}>
