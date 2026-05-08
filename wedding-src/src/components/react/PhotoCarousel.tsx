@@ -33,6 +33,39 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+// Embaralha garantindo que nenhuma imagem se repita na fronteira com o bloco
+// anterior (avoidStartId) e/ou seguinte (avoidEndId). Como cada bloco contém
+// todas as imagens uma única vez, isso garante a propriedade "nenhuma foto
+// reaparece sem antes mostrar todas as outras" mesmo na junção entre blocos.
+function shuffleAvoidingBoundary(
+  arr: Item[],
+  avoidStartId?: string,
+  avoidEndId?: string
+): Item[] {
+  const s = shuffle(arr);
+  if (s.length < 2) return s;
+  if (avoidStartId && s[0].id === avoidStartId) {
+    // Troca com o segundo elemento; como itens são únicos no bloco,
+    // s[1] ≠ avoidStartId, então o conflito some.
+    [s[0], s[1]] = [s[1], s[0]];
+  }
+  if (avoidEndId && s[s.length - 1].id === avoidEndId) {
+    [s[s.length - 1], s[s.length - 2]] = [s[s.length - 2], s[s.length - 1]];
+  }
+  return s;
+}
+
+function buildInitialBlocks(safeImages: Item[]): Item[][] {
+  if (safeImages.length === 0) return [];
+  const out: Item[][] = [];
+  for (let i = 0; i < BLOCK_COUNT; i++) {
+    const prev = out[out.length - 1];
+    const avoid = prev ? prev[prev.length - 1].id : undefined;
+    out.push(shuffleAvoidingBoundary(safeImages, avoid));
+  }
+  return out;
+}
+
 export default function PhotoCarousel({ autoplayMs, images }: Props) {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [animate, setAnimate] = useState(true);
@@ -43,18 +76,11 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
   // Blocos embaralhados; cada bloco é uma cópia shuffled das imagens.
   // A ordem inicial é aleatória; conforme o usuário avança/volta, blocos novos
   // (também embaralhados, cada um diferente) substituem os das extremidades.
-  const [blocks, setBlocks] = useState<Item[][]>(() => {
-    if (count === 0) return [];
-    return Array.from({ length: BLOCK_COUNT }, () => shuffle(safeImages));
-  });
+  const [blocks, setBlocks] = useState<Item[][]>(() => buildInitialBlocks(safeImages));
 
   useEffect(() => {
-    if (count === 0) {
-      setBlocks([]);
-      return;
-    }
-    setBlocks(Array.from({ length: BLOCK_COUNT }, () => shuffle(safeImages)));
-  }, [safeImages, count]);
+    setBlocks(buildInitialBlocks(safeImages));
+  }, [safeImages]);
 
   const flat = useMemo(() => blocks.flat(), [blocks]);
   const totalSlides = flat.length;
@@ -163,9 +189,13 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
     const handle = () => {
       if (isDraggingRef.current) return;
       // Perto da borda esquerda: adiciona bloco novo no início, descarta o último.
+      // O novo bloco não pode terminar com a mesma imagem que abre o bloco atual.
       if (index < count) {
         setAnimate(false);
-        setBlocks((bs) => [shuffle(safeImages), ...bs.slice(0, bs.length - 1)]);
+        setBlocks((bs) => {
+          const firstId = bs[0]?.[0]?.id;
+          return [shuffleAvoidingBoundary(safeImages, undefined, firstId), ...bs.slice(0, bs.length - 1)];
+        });
         setIndex((i) => i + count);
         requestAnimationFrame(() => {
           requestAnimationFrame(() => setAnimate(true));
@@ -173,9 +203,14 @@ export default function PhotoCarousel({ autoplayMs, images }: Props) {
         return;
       }
       // Perto da borda direita: adiciona bloco novo no final, descarta o primeiro.
+      // O novo bloco não pode começar com a mesma imagem que fecha o bloco atual.
       if (index >= totalSlides - count) {
         setAnimate(false);
-        setBlocks((bs) => [...bs.slice(1), shuffle(safeImages)]);
+        setBlocks((bs) => {
+          const last = bs[bs.length - 1];
+          const lastId = last?.[last.length - 1]?.id;
+          return [...bs.slice(1), shuffleAvoidingBoundary(safeImages, lastId)];
+        });
         setIndex((i) => i - count);
         requestAnimationFrame(() => {
           requestAnimationFrame(() => setAnimate(true));
