@@ -1,11 +1,7 @@
 [
-  { "id": "forno",              "nome": "Forno",              "valor": 2000.0 },
   { "id": "maquina-de-lavar",   "nome": "Máquina de lavar",   "valor": 2000.0 },
-  { "id": "geladeira",          "nome": "Geladeira",          "valor": 4000.0 },
-  { "id": "cama",               "nome": "Cama",               "valor": 2000.0 },
   { "id": "colchao",            "nome": "Colchão",            "valor": 4000.0 },
-  { "id": "mesa-de-jantar",     "nome": "Mesa de jantar",     "valor": 1800.0 },
+  { "id": "cama",               "nome": "Cama",               "valor": 2000.0 },
   { "id": "armario-de-cozinha", "nome": "Armário de cozinha", "valor": 1800.0 },
-  { "id": "guarda-roupa",       "nome": "Guarda roupa",       "valor": 1800.0 },
-  { "id": "ar-condicionado",    "nome": "Ar condicionado",    "valor": 1800.0 }
+  { "id": "forno",              "nome": "Forno",              "valor": 2000.0 }
 ]
