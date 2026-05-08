@@ -3,9 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import site from '../content/data/site.json';
 import rsvpSection from '../content/data/rsvp-section.json';
 import RsvpIntro from '../content/sections/rsvp-intro.md';
+import * as rsvpSuccessMd from '../content/sections/rsvp-success.md';
 import RsvpForm from '../components/react/RsvpForm';
 
 const title = `RSVP - ${site.couple.names}`;
+const successMessageHtml = await rsvpSuccessMd.compiledContent();
 ---
 
 <BaseLayout title={title}>
@@ -33,7 +35,7 @@ const title = `RSVP - ${site.couple.names}`;
             sendingLabel={rsvpSection.sendingLabel}
             householdNotice={rsvpSection.householdNotice}
             successTitle={rsvpSection.successTitle}
-            successMessage={rsvpSection.successMessage}
+            successMessageHtml={successMessageHtml}
             successCloseLabel={rsvpSection.successCloseLabel}
           />
         </div>

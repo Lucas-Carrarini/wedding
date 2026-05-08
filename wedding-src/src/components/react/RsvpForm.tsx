@@ -8,7 +8,7 @@ type Props = {
   sendingLabel: string;
   householdNotice: string;
   successTitle: string;
-  successMessage: string;
+  successMessageHtml: string;
   successCloseLabel: string;
   errorTitle?: string;
   errorMessage?: string;
@@ -22,7 +22,7 @@ export default function RsvpForm(props: Props) {
     sendingLabel,
     householdNotice,
     successTitle,
-    successMessage,
+    successMessageHtml,
     successCloseLabel,
     errorTitle = 'Algo deu errado',
     errorMessage = 'Não foi possível registrar sua confirmação agora. Tente novamente em alguns instantes.',
@@ -71,7 +71,6 @@ export default function RsvpForm(props: Props) {
 
   const closeModal = () => setResult(null);
   const modalTitle = result === 'success' ? successTitle : errorTitle;
-  const modalMessage = result === 'success' ? successMessage : errorMessage;
 
   const buttonBase =
     'inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold shadow-soft transition-all duration-300';
@@ -126,7 +125,14 @@ export default function RsvpForm(props: Props) {
             className="relative z-10 w-full max-w-md rounded-3xl bg-paper p-8 text-center shadow-soft"
           >
             <div className="font-serif text-2xl font-bold text-graphite">{modalTitle}</div>
-            <p className="mt-3 text-sm text-neutral-600">{modalMessage}</p>
+            {result === 'success' ? (
+              <div
+                className="mt-3 text-sm text-neutral-600 [&_strong]:font-semibold [&_strong]:text-graphite [&_p]:mb-0"
+                dangerouslySetInnerHTML={{ __html: successMessageHtml }}
+              />
+            ) : (
+              <p className="mt-3 text-sm text-neutral-600">{errorMessage}</p>
+            )}
             <button
               type="button"
               onClick={closeModal}
