@@ -1,4 +1,4 @@
-# Setup do Supabase — RSVP e Mural de Recados
+# Setup do Supabase — Presenças e Mural de Recados
 
 Este guia tem **tudo** que precisa ser feito do lado do Supabase para o site funcionar.
 
@@ -39,42 +39,23 @@ Vá em **SQL Editor** no painel do Supabase e cole/execute o bloco abaixo de uma
 
 ```sql
 -- =========================================================
--- Extensões
+-- (se você já rodou a versão anterior do schema, descomente para limpar)
 -- =========================================================
-create extension if not exists unaccent;
-
--- Wrapper IMMUTABLE em volta de unaccent() para poder usar em coluna gerada.
--- (unaccent é STABLE por padrão, o Postgres não aceita em GENERATED ALWAYS AS.)
-create or replace function public.immutable_unaccent(text)
-returns text
-language sql
-immutable strict parallel safe
-as $$ select public.unaccent('public.unaccent'::regdictionary, $1) $$;
+-- drop function if exists public.confirmar_presenca(text);
+-- drop function if exists public.immutable_unaccent(text);
+-- drop table if exists public.convidados;
 
 -- =========================================================
--- Tabela: convidados
+-- Tabela: presencas (lista livre de quem confirmou presença)
 -- =========================================================
-create table if not exists public.convidados (
+create table if not exists public.presencas (
   id uuid primary key default gen_random_uuid(),
-  nome text not null,
-  nome_normalizado text generated always as (lower(public.immutable_unaccent(nome))) stored,
-  confirmado_em timestamptz,
+  nome text not null check (length(trim(nome)) between 2 and 80),
   created_at timestamptz not null default now()
 );
 
-create index if not exists convidados_nome_normalizado_idx
-  on public.convidados (nome_normalizado);
-
-alter table public.convidados enable row level security;
-
--- Bloqueia qualquer acesso direto via anon (só RPC pode tocar nesta tabela)
-drop policy if exists "deny all anon convidados" on public.convidados;
-create policy "deny all anon convidados"
-  on public.convidados
-  for all
-  to anon
-  using (false)
-  with check (false);
+alter table public.presencas enable row level security;
+revoke all on public.presencas from anon, authenticated;
 
 -- =========================================================
 -- Tabela: mensagens
@@ -97,45 +78,33 @@ create policy "deny all anon mensagens"
   with check (false);
 
 -- =========================================================
--- RPC: confirmar_presenca(nome_input)
---   - retorna TRUE  se encontrou o convidado e marcou confirmação
---   - retorna FALSE se o nome não está na lista
+-- RPC: registrar_presenca(nome_input)
+--   - insere uma linha em public.presencas e retorna o id
 -- =========================================================
-create or replace function public.confirmar_presenca(nome_input text)
-returns boolean
+create or replace function public.registrar_presenca(nome_input text)
+returns uuid
 language plpgsql
 security definer
 set search_path = public
 as $$
 declare
   v_id uuid;
-  v_normalizado text;
+  v_nome text;
 begin
-  if nome_input is null or length(trim(nome_input)) < 2 then
-    return false;
+  v_nome := trim(coalesce(nome_input, ''));
+  if length(v_nome) < 2 or length(v_nome) > 80 then
+    raise exception 'nome inválido';
   end if;
 
-  v_normalizado := lower(public.immutable_unaccent(trim(nome_input)));
+  insert into public.presencas (nome) values (v_nome)
+  returning id into v_id;
 
-  select id into v_id
-  from public.convidados
-  where nome_normalizado = v_normalizado
-  limit 1;
-
-  if v_id is null then
-    return false;
-  end if;
-
-  update public.convidados
-  set confirmado_em = coalesce(confirmado_em, now())
-  where id = v_id;
-
-  return true;
+  return v_id;
 end;
 $$;
 
-revoke all on function public.confirmar_presenca(text) from public;
-grant execute on function public.confirmar_presenca(text) to anon, authenticated;
+revoke all on function public.registrar_presenca(text) from public;
+grant execute on function public.registrar_presenca(text) to anon, authenticated;
 
 -- =========================================================
 -- RPC: inserir_mensagem(nome_input, mensagem_input)
@@ -184,35 +153,14 @@ grant execute on function public.inserir_mensagem(text, text) to anon, authentic
 
 ---
 
-## 3. Cadastrar a lista de convidados
+## 3. Como o fluxo funciona
 
-Você pode inserir via SQL (ex.: copia/cola na aba SQL Editor):
-
-```sql
-insert into public.convidados (nome) values
-  ('Lucas Tavares'),
-  ('Letícia Carrarini'),
-  ('João da Silva'),
-  ('Maria de Souza');
--- ... etc
-```
-
-Ou usar a interface gráfica em **Table Editor → convidados → Insert row**.
-
-> A coluna `nome_normalizado` é **gerada automaticamente** (lower + unaccent), então a comparação na hora do RSVP é tolerante a acentos e maiúsculas/minúsculas.
-
-> Cada **pessoa** deve ter sua própria linha (use o nome que você espera que ela digite).
-
----
-
-## 4. Como o fluxo funciona
-
-### RSVP
+### RSVP (lista livre)
 1. Usuário digita o nome no formulário em `/rsvp`.
-2. Frontend chama `supabase.rpc('confirmar_presenca', { nome_input })`.
-3. A função SQL normaliza o nome, procura na tabela e:
-   - Se encontrar: marca `confirmado_em = now()` (se ainda não estiver marcado) e retorna `true` → modal de sucesso.
-   - Se não encontrar: retorna `false` → modal "Nome não encontrado".
+2. Frontend chama `supabase.rpc('registrar_presenca', { nome_input })`.
+3. A função insere uma linha em `presencas` com nome + `created_at` e retorna o `id` → modal de sucesso.
+
+> Não há lista prévia de convidados — qualquer nome válido (2 a 80 caracteres) é aceito. Você consulta depois quem confirmou.
 
 ### Mural
 1. Usuário preenche nome + mensagem no rodapé.
@@ -221,22 +169,18 @@ Ou usar a interface gráfica em **Table Editor → convidados → Insert row**.
 
 ---
 
-## 5. Consultar resultados
+## 4. Consultar resultados
 
 No SQL Editor:
 
 ```sql
--- Quem já confirmou
-select nome, confirmado_em
-from public.convidados
-where confirmado_em is not null
-order by confirmado_em desc;
+-- Quem confirmou presença (ordem cronológica)
+select created_at, nome
+from public.presencas
+order by created_at desc;
 
--- Quem ainda falta
-select nome
-from public.convidados
-where confirmado_em is null
-order by nome;
+-- Total de confirmações
+select count(*) as total from public.presencas;
 
 -- Mensagens recebidas
 select created_at, nome, mensagem
@@ -246,12 +190,11 @@ order by created_at desc;
 
 ---
 
-## 6. Checklist final
+## 5. Checklist final
 
 - [ ] Projeto criado no Supabase
 - [ ] `.env` preenchido em `wedding-src/`
 - [ ] SQL da seção 2 executado com sucesso
-- [ ] Lista de convidados cadastrada
 - [ ] Variáveis `PUBLIC_SUPABASE_URL` e `PUBLIC_SUPABASE_ANON_KEY` configuradas no provedor de deploy
-- [ ] Teste local: `npm run dev` e tentar RSVP com nome existente e inexistente
+- [ ] Teste local: `npm run dev` → enviar RSVP e ver linha em `presencas`
 - [ ] Teste do mural enviando uma mensagem
