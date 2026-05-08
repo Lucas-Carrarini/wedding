@@ -10,8 +10,6 @@ type Props = {
   successTitle: string;
   successMessage: string;
   successCloseLabel: string;
-  notFoundTitle?: string;
-  notFoundMessage?: string;
   errorTitle?: string;
   errorMessage?: string;
 };
@@ -26,13 +24,11 @@ export default function RsvpForm(props: Props) {
     successTitle,
     successMessage,
     successCloseLabel,
-    notFoundTitle = 'Nome não encontrado',
-    notFoundMessage = 'Não localizamos seu nome na lista de convidados. Verifique a grafia ou entre em contato com os noivos.',
     errorTitle = 'Algo deu errado',
     errorMessage = 'Não foi possível registrar sua confirmação agora. Tente novamente em alguns instantes.',
   } = props;
 
-  type ResultKind = 'success' | 'not_found' | 'error' | null;
+  type ResultKind = 'success' | 'error' | null;
   const [name, setName] = useState('');
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<ResultKind>(null);
@@ -55,17 +51,15 @@ export default function RsvpForm(props: Props) {
     setSending(true);
     try {
       const supabase = getSupabase();
-      const { data, error } = await supabase.rpc('confirmar_presenca', {
+      const { error } = await supabase.rpc('registrar_presenca', {
         nome_input: name.trim(),
       });
       if (error) {
         console.error('[RSVP] erro RPC:', error);
         setResult('error');
-      } else if (data === true) {
+      } else {
         setName('');
         setResult('success');
-      } else {
-        setResult('not_found');
       }
     } catch (err) {
       console.error('[RSVP] exceção:', err);
@@ -76,10 +70,8 @@ export default function RsvpForm(props: Props) {
   };
 
   const closeModal = () => setResult(null);
-  const modalTitle =
-    result === 'success' ? successTitle : result === 'not_found' ? notFoundTitle : errorTitle;
-  const modalMessage =
-    result === 'success' ? successMessage : result === 'not_found' ? notFoundMessage : errorMessage;
+  const modalTitle = result === 'success' ? successTitle : errorTitle;
+  const modalMessage = result === 'success' ? successMessage : errorMessage;
 
   const buttonBase =
     'inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold shadow-soft transition-all duration-300';
