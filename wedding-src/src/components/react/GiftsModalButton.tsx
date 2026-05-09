@@ -95,7 +95,7 @@ export default function GiftsModalButton({
                     key={`${g.nome}-${i}`}
                     className="flex items-center justify-center gap-3 rounded-2xl border border-neutral-100 px-4 py-3 text-center"
                   >
-                    <div className="min-w-0 break-words font-semibold text-graphite">{g.nome}:</div>
+                    <div className="min-w-0 break-words font-semibold text-graphite">{g.nome} </div>
                   </li>
                 ))}
               </ul>
