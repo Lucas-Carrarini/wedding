@@ -96,7 +96,6 @@ export default function GiftsModalButton({
                     className="flex items-center justify-center gap-3 rounded-2xl border border-neutral-100 px-4 py-3 text-center"
                   >
                     <div className="min-w-0 break-words font-semibold text-graphite">{g.nome}:</div>
-                    <div className="shrink-0 whitespace-nowrap text-sm font-medium text-brand-600">{formatBRL(g.valor)}</div>
                   </li>
                 ))}
               </ul>
