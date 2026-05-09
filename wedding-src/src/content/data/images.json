@@ -32,7 +32,8 @@
     "silencioso":          { "real": "/images/manual/silencioso.png",          "mockSize": "256x256/png" }
   },
   "localizacao": {
-    "vale": { "real": "/images/localizacao/vale-dos-sonhos.png", "mockSize": "1920x1080?text=Vale+dos+Sonhos" }
+    "mapaZonaOeste":    { "real": "/images/localizacao/mapa-zona-oeste.png",    "mockSize": "1920x1080?text=Mapa+Zona+Oeste" },
+    "mapaZonaSulNorte": { "real": "/images/localizacao/mapa-zona-sul-norte.png", "mockSize": "1920x1080?text=Mapa+Zona+Sul-Norte" }
   },
   "pix": {
     "qrcode": { "real": "/images/pix/qrcode.png", "mockSize": "800x800/png" }
