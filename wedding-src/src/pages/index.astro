@@ -8,6 +8,7 @@ import Historia from '../content/sections/historia.md';
 import historiaSection from '../content/data/historia-section.json';
 import localizacao from '../content/data/localizacao.json';
 import AddToCalendarLink from '../components/react/AddToCalendarLink';
+import MapsCallout from '../components/react/MapsCallout';
 import manualItems from '../content/data/manual.json';
 import manualSection from '../content/data/manual-section.json';
 import ManualGrid from '../components/react/ManualGrid';
@@ -128,7 +129,7 @@ const manualWithContent = await Promise.all(
             <iframe
               title="Mapa"
               src={localizacao.map.embedUrl}
-              class="h-[420px] w-full"
+              class="block h-full min-h-[420px] w-full"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
@@ -161,6 +162,17 @@ const manualWithContent = await Promise.all(
               </div>
             </div>
 
+            <div class="mt-6">
+              <MapsCallout
+                client:load
+                title="Os dois melhores caminhos são..."
+                maps={[
+                  { id: 'oeste',     label: 'Recreio',    alt: 'Mapa zona oeste',     imageUrl: mapaZonaOesteUrl },
+                  { id: 'sul-norte', label: 'Av. Brasil', alt: 'Mapa zona sul-norte', imageUrl: mapaZonaSulNorteUrl },
+                ]}
+              />
+            </div>
+
             <div class="mt-8 flex flex-wrap gap-3">
               <AddToCalendarLink
                 client:load
@@ -184,24 +196,6 @@ const manualWithContent = await Promise.all(
           </div>
         </div>
 
-        <div class="mt-10 grid gap-6">
-          <div class="overflow-hidden rounded-3xl bg-paper shadow-soft">
-            <img
-              src={mapaZonaOesteUrl}
-              alt="Mapa zona oeste"
-              class="block w-full"
-              loading="lazy"
-            />
-          </div>
-          <div class="overflow-hidden rounded-3xl bg-paper shadow-soft">
-            <img
-              src={mapaZonaSulNorteUrl}
-              alt="Mapa zona sul-norte"
-              class="block w-full"
-              loading="lazy"
-            />
-          </div>
-        </div>
       </div>
     </section>
 
