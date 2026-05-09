@@ -32,13 +32,14 @@ export default function MapsCallout({ title, maps, closeLabel = 'Fechar' }: Prop
     };
   }, [open]);
 
-  // Quando o modal abre no mobile, posiciona o scroll horizontal no centro
-  // da imagem para que o usuário possa arrastar tanto pra esquerda quanto
-  // pra direita. (Com flex+justify-center o container não permitia voltar.)
+  // Quando o modal abre no mobile, posiciona o scroll horizontal num ponto
+  // levemente à direita do centro (a parte de interesse dos mapas fica
+  // ligeiramente deslocada). O usuário ainda pode arrastar pros dois lados.
+  const INITIAL_SCROLL_BIAS = 0.62; // 0.5 = centro; 0.62 ≈ um pouco à direita.
   const onMobileImgLoad = () => {
     const el = mobileScrollRef.current;
     if (!el) return;
-    el.scrollLeft = Math.max(0, (el.scrollWidth - el.clientWidth) / 2);
+    el.scrollLeft = Math.max(0, (el.scrollWidth - el.clientWidth) * INITIAL_SCROLL_BIAS);
   };
 
   return (
