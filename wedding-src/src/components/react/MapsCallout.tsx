@@ -35,7 +35,7 @@ export default function MapsCallout({ title, maps, closeLabel = 'Fechar' }: Prop
   // Quando o modal abre no mobile, posiciona o scroll horizontal num ponto
   // levemente à direita do centro (a parte de interesse dos mapas fica
   // ligeiramente deslocada). O usuário ainda pode arrastar pros dois lados.
-  const INITIAL_SCROLL_BIAS = 0.62; // 0.5 = centro; 0.62 ≈ um pouco à direita.
+  const INITIAL_SCROLL_BIAS = 0.72; // 0.5 = centro; mais alto = mais à direita.
   const onMobileImgLoad = () => {
     const el = mobileScrollRef.current;
     if (!el) return;
