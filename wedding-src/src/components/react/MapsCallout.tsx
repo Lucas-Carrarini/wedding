@@ -98,7 +98,7 @@ export default function MapsCallout({ title, maps, closeLabel = 'Fechar' }: Prop
               src={open.imageUrl}
               alt={open.alt}
               onLoad={onMobileImgLoad}
-              className="h-[88vh] w-auto max-w-none flex-none select-none"
+              className="h-[70vh] w-auto max-w-none flex-none select-none"
               draggable={false}
             />
           </div>
