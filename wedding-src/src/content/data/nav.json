@@ -3,6 +3,6 @@
   "items": [
     { "label": "Home", "href": "/" },
     { "label": "Confirme sua presença", "href": "/rsvp" },
-    { "label": "Lista de presentes", "href": "/presentes" }
+    { "label": "Lista de presentes", "href": "/gifts" }
   ]
 }
