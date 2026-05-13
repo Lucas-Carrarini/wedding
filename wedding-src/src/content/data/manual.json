@@ -8,7 +8,7 @@
   {
     "id": "escolha-presente",
     "title": "Escolha um presente",
-    "redirectTo": "/presentes",
+    "redirectTo": "/gifts",
     "redirectLabel": "Ver lista de presentes"
   },
   { "id": "dress-code", "title": "Dress code" },
