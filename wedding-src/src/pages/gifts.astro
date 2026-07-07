@@ -48,7 +48,7 @@ const giftsList = presentes.map((g: { id: string; nome: string; valor: number })
             <div class="prose prose-neutral max-w-none">
               <PresentesPreferencia />
             </div>
-            <div class="flex justify-center">
+            <div class="flex justify-center hidden">
               <GiftsModalButton
                 client:load
                 openLabel={presentesSection.seeListButton}
