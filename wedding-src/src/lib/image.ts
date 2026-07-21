@@ -6,6 +6,8 @@ export type ImageEntry = {
   real: string;
   mockSize: string;
   alt?: string;
+  /** Caminho para uma versão leve/placeholder exibida antes da imagem principal. */
+  preview?: string;
 };
 
 /**
@@ -23,4 +25,18 @@ export function resolveImage(entry: ImageEntry): string {
     return url(entry.real);
   }
   return `https://placehold.co/${entry.mockSize}`;
+}
+
+/**
+ * Resolve a URL de preview se o arquivo existir; caso contrário retorna undefined
+ * para que o componente carregue a imagem principal diretamente.
+ */
+export function resolvePreviewImage(entry: ImageEntry): string | undefined {
+  if (!entry.preview) return undefined;
+  const relative = entry.preview.replace(/^\/+/, '');
+  const diskPath = path.join(process.cwd(), 'public', relative);
+  if (fs.existsSync(diskPath)) {
+    return url(entry.preview);
+  }
+  return undefined;
 }

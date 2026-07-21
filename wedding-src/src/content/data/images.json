@@ -1,7 +1,7 @@
 {
   "hero": {
-    "desktop": { "real": "/images/hero/desktop.png", "mockSize": "1920x1080" },
-    "mobile":  { "real": "/images/hero/mobile.png",  "mockSize": "1080x1920" }
+    "desktop": { "real": "/images/hero/desktop.png", "preview": "/images/hero/desktop-preview.png", "mockSize": "1920x1080" },
+    "mobile":  { "real": "/images/hero/mobile.png", "preview": "/images/hero/mobile-preview.png", "mockSize": "1080x1920" }
   },
   "prewedding": {
     "pre-01": { "real": "/images/prewedding/foto-1.png",  "mockSize": "900x900?text=Foto+1",  "alt": "" },

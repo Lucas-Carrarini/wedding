@@ -14,12 +14,15 @@ import manualSection from '../content/data/manual-section.json';
 import ManualGrid from '../components/react/ManualGrid';
 import images from '../content/data/images.json';
 import { url } from '../lib/url';
-import { resolveImage } from '../lib/image';
+import { resolveImage, resolvePreviewImage } from '../lib/image';
+import ProgressiveImage from '../components/react/ProgressiveImage';
 
 const title = `${site.couple.names} - ${site.wedding.dateDisplay}`;
 
 const heroDesktopUrl = resolveImage(images.hero.desktop);
 const heroMobileUrl = resolveImage(images.hero.mobile);
+const heroDesktopPreviewUrl = resolvePreviewImage(images.hero.desktop);
+const heroMobilePreviewUrl = resolvePreviewImage(images.hero.mobile);
 const mapaZonaOesteUrl = resolveImage(images.localizacao.mapaZonaOeste);
 const mapaZonaSulNorteUrl = resolveImage(images.localizacao.mapaZonaSulNorte);
 
@@ -50,15 +53,19 @@ const manualWithContent = await Promise.all(
 
   <main>
     <section class="relative min-h-screen">
-      <picture class="absolute inset-0">
-        <source media="(min-width: 768px)" srcset={heroDesktopUrl} />
-        <img
-          src={heroMobileUrl}
-          alt=""
-          class="h-full w-full object-cover object-center"
-          loading="eager"
-        />
-      </picture>
+      <ProgressiveImage
+        client:load
+        wrapperClassName="absolute inset-0"
+        sources={[
+          { srcset: heroDesktopUrl, media: '(min-width: 768px)' },
+          { srcset: heroMobileUrl, media: '(max-width: 767px)' },
+        ]}
+        src={heroMobileUrl}
+        previewSrc={heroMobilePreviewUrl ?? heroDesktopPreviewUrl}
+        alt=""
+        loading="eager"
+        className="h-full w-full object-cover object-center"
+      />
 
       <div class="absolute inset-0 bg-black/35"></div>
 
